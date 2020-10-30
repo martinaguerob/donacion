@@ -12,19 +12,29 @@
 				<div class="cd-registrar">
 					<form action="">
 						<div class="cd-form-registrar">
-							<input placeholder="Nombre" class="form-control input-text" type="text" />
+							<select class="form-control" name="nombres">
+								<option value="0">Nombre de donante</option>
+								<option th:each="donante: ${donantes}" th:value="${donante.id}"
+									th:text="${donante.nombresApellidos}"></option>
+							</select>
 						</div>
 						<div class="cd-form-registrar">
-							<input placeholder="Hospital" class="form-control input-text" type="text" />
+							<select class="form-control" name="hospitales">
+								<option value="0">Hospitales</option>
+								<option th:each="hospital: ${hospitales}"
+									th:value="${hospital.id}" th:text="${hospital.nombre}"></option>
+							</select>
 						</div>
 						<div class="cd-form-registrar">
-							<input placeholder="Fecha de la cita" class="form-control input-text" type="text" />
+							<input placeholder="Fecha de la cita"
+								class="form-control input-text" type="date" />
 						</div>
 						<div class="cd-form-registrar">
-							<input placeholder="Hora de la cita" class="form-control input-text" type="text" />
+							<input placeholder="Hora de la cita"
+								class="form-control input-text" type="time" />
 						</div>
 						<div class="cd-form-registrar">
-							<button type="submit" class="btn-registrar"> Grabar</button>
+							<button type="submit" class="btn-registrar">Grabar</button>
 						</div>
 					</form>
 				</div>
