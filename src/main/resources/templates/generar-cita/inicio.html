@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout(~{::title}, ~{::link}, ~{::body})}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Generar cita</title>
+<link rel="stylesheet" th:href="@{/css/generar-cita.css}">
+</head>
+<body>
+	<div class="generar-cita">
+		<div class="container">
+			<div class="row">
+				<div class="cd-registrar">
+					<form action="">
+						<div class="cd-form-registrar">
+							<input placeholder="Nombre" class="form-control input-text" type="text" />
+						</div>
+						<div class="cd-form-registrar">
+							<input placeholder="Hospital" class="form-control input-text" type="text" />
+						</div>
+						<div class="cd-form-registrar">
+							<input placeholder="Fecha de la cita" class="form-control input-text" type="text" />
+						</div>
+						<div class="cd-form-registrar">
+							<input placeholder="Hora de la cita" class="form-control input-text" type="text" />
+						</div>
+						<div class="cd-form-registrar">
+							<button type="submit" class="btn-registrar"> Grabar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

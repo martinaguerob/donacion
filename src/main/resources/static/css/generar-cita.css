@@ -1,0 +1,30 @@
+.generar-cita{
+	padding: 50px 0px;
+}
+.cd-registrar{
+	background-color: #F4F2F2;
+	width: 50%;
+	text-align: center;
+	margin: 0 auto;
+	padding: 25px;
+}
+.cd-form-registrar{
+	margin-bottom: 10px;
+}
+.input-text{
+	width: 100%;
+	color: #1A1A1A;
+}
+.btn-registrar{
+	background-color: #DD1F26;
+	color: #ffffff;
+	padding: 10px 25px;
+	border: 0px solid #fff;
+	box-shadow: none;
+	font-family: 'Montserrat';
+}
+.btn-registrar:hover{
+	background-color: transparent;
+	border: 1px solid #DD1F26;
+	color: #DD1F26;
+}
