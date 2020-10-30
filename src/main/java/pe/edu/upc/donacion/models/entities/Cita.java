@@ -13,6 +13,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 @Entity
 @Table(name = "citas")
 public class Cita {
@@ -30,10 +33,12 @@ public class Cita {
 
 	@Column(name = "fecha_cita", nullable = false)
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = ISO.DATE) //AAAA-MM-DD
 	private Date fechaCita;
 
 	@Column(name = "hora", nullable = false)
 	@Temporal(TemporalType.TIME)
+	@DateTimeFormat(pattern = "HH:mm")
 	private Date hora;
 
 	public Integer getId() {

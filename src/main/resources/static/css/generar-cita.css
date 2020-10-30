@@ -1,6 +1,13 @@
 .generar-cita{
 	padding: 50px 0px;
 }
+.cd-text-registrar{
+	margin: 15px 5px;
+}
+.cd-text-registrar p{
+	font-family: 'Montserrat';
+	font-size: 15px;
+}
 .cd-registrar{
 	background-color: #F4F2F2;
 	width: 50%;
@@ -11,17 +18,19 @@
 .cd-form-registrar{
 	margin-bottom: 10px;
 }
-.input-text{
+.input-text, select{
 	width: 100%;
 	color: #1A1A1A;
+	font-family: 'Montserrat';
 }
 .btn-registrar{
 	background-color: #DD1F26;
 	color: #ffffff;
 	padding: 10px 25px;
-	border: 0px solid #fff;
+	border: 1px solid #DD1F26;
 	box-shadow: none;
 	font-family: 'Montserrat';
+	transition: .8s;
 }
 .btn-registrar:hover{
 	background-color: transparent;

@@ -6,33 +6,44 @@
 <link rel="stylesheet" th:href="@{/css/generar-cita.css}">
 </head>
 <body>
-	<div class="generar-cita">
+	<div class="generar-cita bg-fondo">
 		<div class="container">
 			<div class="row">
 				<div class="cd-registrar">
-					<form action="">
+					<div class="cd-text-registrar">
+						<p>Registra tu cita en el mejor horario y lugar cercano para
+							ti. Cada gramito de sangre ayuda a salvar muchas vidas.</p>
+					</div>
+					<form th:action="@{/generar-cita/save}" th:object="${cita}"
+						method="post">
 						<div class="cd-form-registrar">
-							<select class="form-control" name="nombres">
+							<select class="form-control" th:field="*{donante}">
 								<option value="0">Nombre de donante</option>
 								<option th:each="donante: ${donantes}" th:value="${donante.id}"
 									th:text="${donante.nombresApellidos}"></option>
 							</select>
 						</div>
+
 						<div class="cd-form-registrar">
-							<select class="form-control" name="hospitales">
+							<select class="form-control" th:field="*{hospital}">
 								<option value="0">Hospitales</option>
 								<option th:each="hospital: ${hospitales}"
 									th:value="${hospital.id}" th:text="${hospital.nombre}"></option>
 							</select>
 						</div>
+
 						<div class="cd-form-registrar">
 							<input placeholder="Fecha de la cita"
-								class="form-control input-text" type="date" />
+								class="form-control input-text" type="date"
+								th:field="*{fechaCita}" />
 						</div>
+
+
 						<div class="cd-form-registrar">
 							<input placeholder="Hora de la cita"
-								class="form-control input-text" type="time" />
+								class="form-control input-text" type="time" th:field="*{hora}" />
 						</div>
+
 						<div class="cd-form-registrar">
 							<button type="submit" class="btn-registrar">Grabar</button>
 						</div>
