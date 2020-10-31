@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout(~{::title}, ~{::link}, ~{::body})}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Hospitales</title>
+<link rel="stylesheet" th:href="@{/css/generar-cita.css}">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+
+
+	<h2>HOSPITALES</h2>
+
+	<table class="table table-hover">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Nombre</th>
+				<th scope="col">Dirección</th>
+				<th scope="col">Teléfono</th>
+				<th scope="col">Apertura</th>
+				<th scope="col">Cierre</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="hospital : ${hospitales}">
+				<th th:text="${hospital.nombre}" scope="row">.</th>
+				<th th:text="${hospital.direccion}"></th>
+				<th th:text="${hospital.numeroTelefono}"></th>
+				<th th:text="${hospital.horarioApertura}"></th>
+				<th th:text="${hospital.horarioCierre}"></th>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
