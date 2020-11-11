@@ -1,6 +1,7 @@
 package pe.edu.upc.donacion.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,8 @@ import pe.edu.upc.donacion.services.HospitalService;
 @Controller
 @RequestMapping("/generar-cita")
 public class GenerarCitaController {
+
+	private String messageConfirmDialog;
 	
 	@Autowired
 	private CitaService citaService;
@@ -47,16 +50,35 @@ public class GenerarCitaController {
 		return "/generar-cita/inicio";
 	}
 	
-	@PostMapping("save")
+	@PostMapping("save") // generar-cita/save
 	public String save(@ModelAttribute("cita") Cita cita, SessionStatus status) {
+		
+		
 		try {
-			citaService.save(cita);
-			status.setComplete();
+			Optional<Hospital>optional = hospitalService.findById(cita.getHospital().getId());
+			if (optional.isPresent()) {
+				
+				if (optional.get().getHorarioApertura().before(cita.getHora()) &&  optional.get().getHorarioCierre().after(cita.getHora())) {
+					citaService.save(cita);
+					status.setComplete();	
+				}
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
 		
-		return "redirect:/generar-cita";
+		return "redirect:/generar-cita";	
 	}
+
+// CREAR FUNCIÓN QUE ENVÍE MENSAJE DE CONFIRMACIÓN 
+	
+	
+	
+	public String getMessageConfirmDialog() {
+		return messageConfirmDialog;
+	}
+	
+
 }

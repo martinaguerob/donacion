@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html
+	th:replace="~{layout :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Registro de citas</title>
+<link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+	<div class="RegistroCitas">
+		<div class="container">
+			<div class="row">
+				<div class="cd-registro">
+					<table class="table table-striped" style="border: 2px solid #000;">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Nombres y Apellidos</th>
+								<th scope="col">Hospital</th>
+								<th scope="col">Fecha</th>
+								<th scope="col">Hora</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="cita : ${citas}">
+								<td th:text="${cita.id}" scope="row">.</td>
+								<td th:text="${cita.donante}">.</td>
+								<td th:text="${cita.hospital}"></td>
+								<td th:text="${cita.fechaCita}"></td>
+								<td th:text="${cita.hora}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script></script>
+</html>
