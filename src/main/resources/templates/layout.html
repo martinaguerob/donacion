@@ -1,14 +1,15 @@
+
 <!DOCTYPE html>
 <html th:fragment="layout (title, css, content, js)"
-	xmlns:th="http://www.thymeleaf.org">
+    xmlns:th="http://www.thymeleaf.org">
 <head>
+
 <title th:replace="${title}"></title>
-<<<<<<< HEAD
+
 <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
-=======
+
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
->>>>>>> feature/HU_RegistrarCita
 <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
 <link rel="stylesheet" th:href="@{/webfonts/Montserrat/montserrat.css}">
 <link rel="stylesheet" th:href="@{/css/generic.css}">
@@ -16,43 +17,40 @@
 <link th:replace="${css}">
 </head>
 <body>
-	<!-- Menú -->
-	<header>
-		<div class="menu bg-white">
-			<div class="container">
-				<div class="row not-margin h-center">
-					<div class="col-md-4 col-lg-5 not-padding">
-						<div class="cd-img-logo">
-							<a th:href="@{'/'}"> <img alt="" th:src="@{/images/LOGO.png}"
-								style="width: 150px;" /></a>
-						</div>
-					</div>
-					<div class="col-md-8 col-lg-7">
-						<ul class="options text-right">
-							<li><a class="" th:href="@{'/'}">Inicio</a></li>
-							<li><a class="" href="#">Nosotros</a></li>
-							<li><a class="" href="#">Dona</a></li>
-							<li><a class="" th:href="@{'/generar-cita'}">Generar
-									cita</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
-	<!-- End-Menú -->
+    <!-- Menú -->
+    <header>
+        <div class="menu bg-white">
+            <div class="container">
+                <div class="row not-margin h-center">
+                    <div class="col-md-4 col-lg-5 not-padding">
+                        <div class="cd-img-logo">
+                            <a th:href="@{'/'}"> <img alt="" th:src="@{/images/LOGO.png}"
+                                style="width: 150px;" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-lg-7">
+                        <ul class="options text-right">
+                            <li><a class="" th:href="@{'/'}">Inicio</a></li>
+                            <li><a class="" href="#">Nosotros</a></li>
+                            <li><a class="" href="#">Dona</a></li>
+                            <li><a class="" th:href="@{'/generar-cita'}">Generar
+                                    cita</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End-Menú -->
 
-	<section th:replace="${content}"></section>
+    <section th:replace="${content}"></section>
 
 
-	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
-<<<<<<< HEAD
-	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-=======
-	<script th:src="@{/js/jquery-ui.min.js}"></script>
-	<script th:src="@{/js/bootstrap.min.js}"></script>
-	
-	<script th:replace="${js}"></script>
->>>>>>> feature/HU_RegistrarCita
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery-ui.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+    <script th:replace="${js}"></script>
 </body>
 </html>
