@@ -21,16 +21,17 @@
 .cd-btn-dona-una-vida-caso{
 	text-align: center;
 }
-.cd-btn-dona-una-vida-caso input {
+.cd-btn-dona-una-vida-caso a {
 	padding: 15px 50px;
 	background-color: #de1f26;
-	color: #ffffff;
+	color: #ffffff !important;
 	border: none;
 	box-shadow: none;
 	text-align: center;
 	font-family: 'Montserrat';
 	font-weight: 900;
 	border-radius: 5px;
+	text-decoration: none !important;
 }
 
 
@@ -77,14 +78,15 @@
 	padding: 50px 0;
 	text-align: center;
 }
-.cd-btn-dona input{
+.cd-btn-dona a{
 	padding: 15px 50px;
 	background-color: #de1f26;
-	color: #ffffff;
+	color: #ffffff !important;
 	border: none;
 	box-shadow: none;
 	text-align: center;
 	font-family: 'Montserrat';
 	font-weight: 900;
 	border-radius: 5px;
+	text-decoration: none !important;
 }

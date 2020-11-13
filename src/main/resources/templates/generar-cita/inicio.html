@@ -1,45 +1,100 @@
 <!DOCTYPE html>
-<html th:replace="~{layout :: layout(~{::title}, ~{::link}, ~{::body})}"
+<html th:replace="~{layout :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Generar cita</title>
 <link rel="stylesheet" th:href="@{/css/generar-cita.css}">
 </head>
 <body>
-	<div class="generar-cita">
+	<div class="generar-cita bg-fondo">
 		<div class="container">
 			<div class="row">
 				<div class="cd-registrar">
-					<form action="">
+					<div class="cd-text-registrar">
+						<p>Registra tu cita en el mejor horario y lugar cercano para
+							ti. Cada gramito de sangre ayuda a salvar muchas vidas.</p>
+					</div>
+					<form th:action="@{/generar-cita/save}" th:object="${cita}"
+						method="post" class="form-generar">
 						<div class="cd-form-registrar">
-							<select class="form-control" name="nombres">
+							<select class="form-control" th:field="*{donante}">
 								<option value="0">Nombre de donante</option>
 								<option th:each="donante: ${donantes}" th:value="${donante.id}"
 									th:text="${donante.nombresApellidos}"></option>
 							</select>
 						</div>
+
 						<div class="cd-form-registrar">
-							<select class="form-control" name="hospitales">
+							<select class="form-control" th:field="*{hospital}" id="hospital">
 								<option value="0">Hospitales</option>
 								<option th:each="hospital: ${hospitales}"
-									th:value="${hospital.id}" th:text="${hospital.nombre}"></option>
+									th:value="${hospital.id}" th:text="${hospital.nombre}">
+								</option>								
 							</select>
 						</div>
+
 						<div class="cd-form-registrar">
 							<input placeholder="Fecha de la cita"
-								class="form-control input-text" type="date" />
+								class="form-control input-text fechaCita" id="fechaCita"
+								type="date" th:field="*{fechaCita}" />
+							<p id="error-fecha"></p>
 						</div>
+
+
 						<div class="cd-form-registrar">
 							<input placeholder="Hora de la cita"
-								class="form-control input-text" type="time" />
+								class="form-control input-text" id="horaCita" type="time" th:field="*{hora}" step="900" />
+								<p id="error-hora"></p>
 						</div>
+
 						<div class="cd-form-registrar">
-							<button type="submit" class="btn-registrar">Grabar</button>
+							<button type="submit" class="btn-registrar" id="btn-registrar" disabled="disabled">Grabar</button>
 						</div>
 					</form>
+					<div class="politicas-generar">
+						<div class="cd-politicas-generar">
+							<p>*Las citas podrán ser generadas como mínimo un día antes del día seleccionado </p>
+							<p>*Las citas podrán ser canceladas o reprogamadas 24 horas antes de su hora solicitada.</p>
+							<p>*Consulte su última fecha de cita antes de generar otra.</p>
+							<p>*Tomar, por favor, dicha solicitud con mucha responsabilidad y conciencia.</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+<!-- TRAER LOS HOSPITALES PRIMERO CON SUS DATOS -->
+<!-- BUSCAR POR ID -->
+<!-- CONDICIONO LA HORA DE INICIO Y FIN, CON LA HORA DE LA CITA -->
+
+
 </body>
+	<script th:inline="javascript" type="text/javascript">
+
+	//validar fecha
+	$('#fechaCita').bind('input', function() {
+		fechaSeleccionada = $(this).val();
+		var now = new Date();
+		var year = now.getFullYear();
+		var day = now.getDate();
+		var month = now.getMonth()+1;
+		var fechaActual = year + "-" + month + "-" + day; //2020-10-31
+
+		if(fechaSeleccionada <= fechaActual){
+			$("#error-fecha").text('Seleecionar una fecha distinta y mayor a hoy');
+			 document.getElementById('btn-registrar').disabled = true;
+		}else{
+			$("#error-fecha").text('');
+			document.getElementById('btn-registrar').disabled = false;
+		}
+	});
+
+	
+	$( ".form-generar" ).change(function() {
+		var hospitalSelect = document.getElementById("hospital").value;
+		if(hospitalSelect != 0){
+		}
+	});
+	</script>
 </html>

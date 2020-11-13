@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html th:replace="~{layout :: layout(~{::title}, ~{::link}, ~{::body})}"
+<html
+	th:replace="~{layout :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Dona una vida</title>
 <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 <body>
-
 	<section class="bg-fondo">
 		<div class="casos-index">
 			<div class="container">
@@ -29,8 +29,7 @@
 									ayuda ¿Ayudarías a esta madre ejemplar?</p>
 							</div>
 							<div class="cd-btn-dona-una-vida-caso">
-								<input type="submit" value="Dona una vida"
-									onclick="location.href='/donacion/registro'" />
+								<a class="btn-go-generar-cita" th:href="@{'/generar-cita'}">Dona una vida</a>
 							</div>
 						</div>
 					</div>
@@ -108,8 +107,7 @@
 					</div>
 					<div class="col-md-6">
 						<div class="cd-btn-dona">
-							<input type="submit" value="Dona una vida"
-								onclick="location.href='/donacion/registro'" />
+							<a class="btn-go-generar-cita" th:href="@{'/generar-cita'}">Dona una vida</a>
 						</div>
 					</div>
 				</div>
@@ -117,4 +115,7 @@
 		</div>
 	</section>
 </body>
+
+<script>
+</script>
 </html>
