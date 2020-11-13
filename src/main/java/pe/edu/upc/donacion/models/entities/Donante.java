@@ -23,55 +23,53 @@ public class Donante {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
+	
 	@Column(name = "email", unique = true, nullable = false)
 	private String email;
-
-	@Column(name = "contrase�a", nullable = false)
+	
+	@Column(name = "contraseña", nullable = false)
 	private String contraseña;
-
-	@Column(name = "nombres_apellidos", length = 50, nullable = false)
+	
+	@Column(name = "nombres_apellidos", nullable = false)
 	private String nombresApellidos;
-
+	
 	@Column(name = "numero_documento", length = 12, unique = true, nullable = false)
 	private String numeroDocumento;
-
-	@Column(name = "fecha_nacimiento")
+	
+	@Column(name ="fecha_nacimiento")
 	@Temporal(TemporalType.DATE)
 	private Date fechaNacimiento;
-
-	@Column(name = "direccion", length = 30, nullable = false)
+	
+	@Column(name = "direccion", nullable = false)
 	private String direccion;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "distrito_id")
 	private Distrito distrito;
-
+	
 	@Transient
 	private Integer distritoId;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "tipoSangre_id")
 	private TipoSangre tipoSangre;
 	
 	@Transient
-	private Integer tiposangreId;
-
+	private Integer tipoSangreId;
+	
 	@OneToMany(mappedBy = "donante")
-	private List<RegistroDonacion> registroDonaciones;
-
+	private List<RegistroDonacion> registrosDonaciones;
+	
 	@OneToMany(mappedBy = "donante")
-	private List<FichaMedica> fichasMedica;
-
+	private List<FichaMedica> fichasMedicas;
+	
 	@OneToMany(mappedBy = "donante")
 	private List<Cita> citas;
-
+	
 	public Donante() {
-		registroDonaciones = new ArrayList<RegistroDonacion>();
-		fichasMedica = new ArrayList<FichaMedica>();
+		registrosDonaciones = new ArrayList<RegistroDonacion>();
+		fichasMedicas = new ArrayList<FichaMedica>();
 		citas = new ArrayList<Cita>();
-		this.distritoId = 0;
-		this.tiposangreId = 0;
 	}
 
 	public Integer getId() {
@@ -130,36 +128,13 @@ public class Donante {
 		this.direccion = direccion;
 	}
 
-	public TipoSangre getTipoSangre() {
-		return tipoSangre;
-	}
-
-	public void setTipoSangre(TipoSangre tipoSangre) {
-		this.tipoSangre = tipoSangre;
-		if (this.tipoSangre != null) {
-			this.tiposangreId = this.tipoSangre.getId();
-		}
-	}
-	
-	public Integer getTiposangreId() {
-		if (this.tiposangreId <= 0 && this.tipoSangre != null) {
-			this.tiposangreId = this.tipoSangre.getId();
-		}
-		return tiposangreId;
-	}
-
-	public void setTiposangreId(Integer tiposangreId) {
-		this.tiposangreId = tiposangreId;
-	}
-	
-	
 	public Distrito getDistrito() {
 		return distrito;
 	}
 
 	public void setDistrito(Distrito distrito) {
 		this.distrito = distrito;
-		if (this.distrito != null) {
+		if (this.distrito != null ) {
 			this.distritoId = this.distrito.getId();
 		}
 	}
@@ -171,24 +146,46 @@ public class Donante {
 		return distritoId;
 	}
 
-	public void setDistritoId(Integer distritoId) {
-		this.distritoId = distritoId;
+	public void setDistritoId(Integer ditritoId) {
+		this.distritoId = ditritoId;
 	}
 
-	public List<RegistroDonacion> getRegistroDonaciones() {
-		return registroDonaciones;
+	public TipoSangre getTipoSangre() {
+		return tipoSangre;
 	}
 
-	public void setRegistroDonaciones(List<RegistroDonacion> registroDonaciones) {
-		this.registroDonaciones = registroDonaciones;
+	public void setTipoSangre(TipoSangre tipoSangre) {
+		this.tipoSangre = tipoSangre;
+		if (this.tipoSangre != null) {
+			this.tipoSangreId = this.tipoSangre.getId();
+		}
 	}
 
-	public List<FichaMedica> getFichasMedica() {
-		return fichasMedica;
+	public Integer getTipoSangreId() {
+		if (this.tipoSangreId <= 0 && this.tipoSangre != null) {
+			this.tipoSangreId = this.tipoSangre.getId();
+		}
+		return tipoSangreId;
 	}
 
-	public void setFichasMedica(List<FichaMedica> fichasMedica) {
-		this.fichasMedica = fichasMedica;
+	public void setTipoSangreId(Integer tipoSangreId) {
+		this.tipoSangreId = tipoSangreId;
+	}
+
+	public List<RegistroDonacion> getRegistrosDonaciones() {
+		return registrosDonaciones;
+	}
+
+	public void setRegistrosDonaciones(List<RegistroDonacion> registrosDonaciones) {
+		this.registrosDonaciones = registrosDonaciones;
+	}
+
+	public List<FichaMedica> getFichasMedicas() {
+		return fichasMedicas;
+	}
+
+	public void setFichasMedicas(List<FichaMedica> fichasMedicas) {
+		this.fichasMedicas = fichasMedicas;
 	}
 
 	public List<Cita> getCitas() {
@@ -198,4 +195,7 @@ public class Donante {
 	public void setCitas(List<Cita> citas) {
 		this.citas = citas;
 	}
+	
+	
+	
 }
