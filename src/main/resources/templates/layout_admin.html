@@ -2,14 +2,14 @@
 <html th:fragment="layout (title, css, content, js)"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<title th:replace="${title}"></title>
-
 <meta charset="ISO-8859-1">
+<title th:replace="${title}"></title>
 <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
 <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
 <link rel="stylesheet" th:href="@{/webfonts/Montserrat/montserrat.css}">
 <link rel="stylesheet" th:href="@{/css/generic.css}">
 <link rel="stylesheet" th:href="@{/css/menu.css}">
+<link rel="stylesheet" th:href="@{/css/layout-admin.css}">
 <link th:replace="${css}">
 </head>
 <body>
@@ -39,14 +39,27 @@
 	</header>
 	<!-- End-Menú -->
 
-	<section th:replace="${content}"></section>
+	<section class="admin">
+		<div class="container full-width">
+			<div class="row">
+				<div class="col-md-2 not-padding cd-panel">
+					<div class="sidebar">
+						<a class="distrito" th:href="@{'/admin/distrito'}">Distrito</a>
+						<a class="hospital" th:href="@{'/admin/hospital'}">Hospitales</a>
+						<a class="tiposangre" th:href="@{'/admin/tipo-de-sangre'}">Tipo de sangre</a>
+						<a href="#contact">Casos</a>
+					</div>
+				</div>
 
-
+				<div class="col-md-10 not-padding cd-contenido">
+					<div th:replace="${content}"></div>
+				</div>
+			</div>
+		</div>
+	</section>
 	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
 	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
 	<script th:src="@{/js/jquery-ui.min.js}"></script>
-	<script th:src="@{/js/bootstrap.min.js}"></script>
-	
 	<script th:replace="${js}"></script>
 </body>
 </html>
