@@ -3,7 +3,7 @@
 	th:replace="~{layout_admin :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>Hospitales</title>
 <link rel="stylesheet">
 </head>
@@ -24,16 +24,16 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<th scope="col">#</th>
+									<th class="text-center" style="width: 60px;" scope="col">#</th>
 									<th scope="col">Nombre</th>
-									<th scope="col">Action</th>
+									<th class="text-center" style="width: 120px;" scope="col">Acción</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="hospital : ${hospitales}">
-									<th th:text="${hospital.id}" scope="row">.</th>
+									<th class="text-center" style="width: 60px;" th:text="${hospital.id}" scope="row">.</th>
 									<td th:text="${hospital.nombre}"></td>
-									<td>Otto</td>
+									<td class="text-center" style="width: 120px;"><a class="btn-edit"><i class="fas fa-edit"></i></a></td>
 								</tr>
 							</tbody>
 						</table>

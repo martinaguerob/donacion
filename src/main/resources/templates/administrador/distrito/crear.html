@@ -3,7 +3,6 @@
 	th:replace="~{layout_admin :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
 <title>Distrito | Crear</title>
 <link rel="stylesheet">
 </head>
@@ -14,7 +13,7 @@
 				<div class="col-md-12">
 					<div class="box box-warning" style="padding-bottom: 20px;">
 						<div class="box-header with-border">
-							<h3 class="box-title">CREAR DISTRITO</h3>
+							<h3 class="box-title">REGISTRAR DISTRITO</h3>
 						</div>
 						<div class="box-body form-horizontal">
 							<div class="form-group">
@@ -40,6 +39,6 @@
 	</div>
 </body>
 <script>
-$(".distrito").addClass( "active" );
+$(".sidebar-menu>li>a.distrito").addClass( "active" );
 </script>
 </html>

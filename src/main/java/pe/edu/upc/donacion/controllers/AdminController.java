@@ -60,8 +60,9 @@ public class AdminController {
 
 	@GetMapping("distrito/crear")
 	public String crearDistrito(Model model) {
+		Distrito distrito = new Distrito();
 		try {
-
+			model.addAttribute("distrito", distrito);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
