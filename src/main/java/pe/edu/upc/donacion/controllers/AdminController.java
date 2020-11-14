@@ -59,17 +59,27 @@ public class AdminController {
 		return "/administrador/distrito/crear";
 	}
 
+<<<<<<< HEAD
 	@GetMapping("hospital")
 	public String hospital(Model model) {
 		try {
 			List<Hospital> hospitales = hospitalService.findAll();
 			model.addAttribute("hospitales", hospitales);
+=======
+	@PostMapping("distrito/save")
+	public String saveDistrito(@ModelAttribute("distrito") Distrito distrito, SessionStatus status) {
+		try {
+			distritoService.save(distrito);
+			status.setComplete();
+
+>>>>>>> e368aa41d0fabffb9918841d1a699b9d5f5d10bc
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		return "/administrador/hospital/inicio";
+		return "redirect:/admin/distrito";
 	}
+<<<<<<< HEAD
 
 	@GetMapping("hospital/crear")
 	public String crearHospital(Model model) {
@@ -82,6 +92,46 @@ public class AdminController {
 		return "/administrador/hospital/crear";
 	}
 
+=======
+	
+	@GetMapping("hospital")
+    public String hospital(Model model) {
+        try {
+            List<Hospital> hospitales= hospitalService.findAll();
+            model.addAttribute("hospitales", hospitales);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println(e.getMessage());
+        }
+        return "/administrador/hospital/inicio";
+    }
+
+    @GetMapping("hospital/crear")
+    public String crearHospital(Model model) {
+        Hospital hospital = new Hospital();
+        try {
+            List<Distrito> distritos = distritoService.findAll();
+            model.addAttribute("distritos", distritos);
+            model.addAttribute("hospital", hospital);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println(e.getMessage());
+        }
+        return "/administrador/hospital/crear";
+    }
+    @PostMapping("hospital/save")
+    public String saveHospital(@ModelAttribute("hospital") Hospital hospital, SessionStatus status) {
+        try {
+            hospitalService.save(hospital);
+            status.setComplete();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println(e.getMessage());
+        }
+        return "redirect:/admin/hospital";
+    }
+	
+>>>>>>> e368aa41d0fabffb9918841d1a699b9d5f5d10bc
 	@GetMapping("tipo-de-sangre")
 	public String tipoSangre(Model model) {
 		try {
