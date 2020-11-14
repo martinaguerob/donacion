@@ -1,5 +1,8 @@
 package pe.edu.upc.donacion.controllers;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +12,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 
+import pe.edu.upc.donacion.models.entities.Caso;
 import pe.edu.upc.donacion.models.entities.Distrito;
 import pe.edu.upc.donacion.models.entities.Hospital;
 import pe.edu.upc.donacion.models.entities.TipoSangre;
+import pe.edu.upc.donacion.services.CasoService;
 import pe.edu.upc.donacion.services.DistritoService;
 import pe.edu.upc.donacion.services.HospitalService;
 import pe.edu.upc.donacion.services.TipoSangreService;
@@ -30,6 +37,9 @@ public class AdminController {
 
 	@Autowired
 	private TipoSangreService tipoSangreService;
+	
+	@Autowired
+	private CasoService casoService;
 
 	@GetMapping
 	public String index(Model model) {
@@ -59,32 +69,38 @@ public class AdminController {
 		return "/administrador/distrito/crear";
 	}
 
-<<<<<<< HEAD
-	@GetMapping("hospital")
-	public String hospital(Model model) {
-		try {
-			List<Hospital> hospitales = hospitalService.findAll();
-			model.addAttribute("hospitales", hospitales);
-=======
 	@PostMapping("distrito/save")
 	public String saveDistrito(@ModelAttribute("distrito") Distrito distrito, SessionStatus status) {
 		try {
 			distritoService.save(distrito);
 			status.setComplete();
 
->>>>>>> e368aa41d0fabffb9918841d1a699b9d5f5d10bc
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
 		return "redirect:/admin/distrito";
 	}
-<<<<<<< HEAD
+
+	@GetMapping("hospital")
+	public String hospital(Model model) {
+		try {
+			List<Hospital> hospitales = hospitalService.findAll();
+			model.addAttribute("hospitales", hospitales);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+		return "/administrador/hospital/inicio";
+	}
 
 	@GetMapping("hospital/crear")
 	public String crearHospital(Model model) {
+		Hospital hospital = new Hospital();
 		try {
-
+			List<Distrito> distritos = distritoService.findAll();
+			model.addAttribute("distritos", distritos);
+			model.addAttribute("hospital", hospital);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
@@ -92,46 +108,18 @@ public class AdminController {
 		return "/administrador/hospital/crear";
 	}
 
-=======
-	
-	@GetMapping("hospital")
-    public String hospital(Model model) {
-        try {
-            List<Hospital> hospitales= hospitalService.findAll();
-            model.addAttribute("hospitales", hospitales);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println(e.getMessage());
-        }
-        return "/administrador/hospital/inicio";
-    }
+	@PostMapping("hospital/save")
+	public String saveHospital(@ModelAttribute("hospital") Hospital hospital, SessionStatus status) {
+		try {
+			hospitalService.save(hospital);
+			status.setComplete();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+		return "redirect:/admin/hospital";
+	}
 
-    @GetMapping("hospital/crear")
-    public String crearHospital(Model model) {
-        Hospital hospital = new Hospital();
-        try {
-            List<Distrito> distritos = distritoService.findAll();
-            model.addAttribute("distritos", distritos);
-            model.addAttribute("hospital", hospital);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println(e.getMessage());
-        }
-        return "/administrador/hospital/crear";
-    }
-    @PostMapping("hospital/save")
-    public String saveHospital(@ModelAttribute("hospital") Hospital hospital, SessionStatus status) {
-        try {
-            hospitalService.save(hospital);
-            status.setComplete();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println(e.getMessage());
-        }
-        return "redirect:/admin/hospital";
-    }
-	
->>>>>>> e368aa41d0fabffb9918841d1a699b9d5f5d10bc
 	@GetMapping("tipo-de-sangre")
 	public String tipoSangre(Model model) {
 		try {
