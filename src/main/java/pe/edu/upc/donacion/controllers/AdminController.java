@@ -58,6 +58,19 @@ public class AdminController {
 		}
 		return "/administrador/distrito/crear";
 	}
+
+	@PostMapping("distrito/save")
+	public String saveDistrito(@ModelAttribute("distrito") Distrito distrito, SessionStatus status) {
+		try {
+			distritoService.save(distrito);
+			status.setComplete();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+		return "redirect:/admin/distrito";
+	}
 	
 	@GetMapping("hospital")
     public String hospital(Model model) {
