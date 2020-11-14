@@ -24,7 +24,7 @@ public class Caso {
 	@Column(name = "edad", length = 2, nullable = false)
 	private String edad;
 	
-	@Column(name = "descripcion", length = 250, nullable = false)
+	@Column(name = "descripcion", length = 1000, nullable = false)
 	private String descripcion;
 	
 	@Column(name = "posicion", nullable = false)

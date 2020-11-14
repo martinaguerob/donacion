@@ -33,7 +33,7 @@
 								<tr th:each="caso : ${casos}">
 									<th class="text-center" style="width: 60px;" th:text="${caso.id}" scope="row">.</th>
 									<td th:text="${caso.nombresApellidos}"></td>
-									<td class="text-center" style="width: 120px;"><a class="btn-edit"><i class="fas fa-edit"></i></a></td>
+									<td class="text-center" style="width: 120px;"><a th:href="@{'/admin/caso/edit/' + ${caso.id}}" class="btn-edit"><i class="fas fa-edit"></i></a></td>
 								</tr>
 							</tbody>
 						</table>

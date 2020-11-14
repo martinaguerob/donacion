@@ -4,25 +4,24 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>Tipo de sangre | Registrar</title>
+<title>Distrito | Editar</title>
 <link rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<div class="row">
-			<form th:action="@{/admin/tipo-de-sangre/save}" th:object="${tipoSangre}"
-				method="post" class="full-width" style="width: 100%;">
+			<form th:action="@{/admin/distrito/update/}+ ${distrito.id}" th:object="${distrito}" method="post" class="full-width" style="width: 100%;">
 				<div class="col-md-12">
 					<div class="box box-warning" style="padding-bottom: 20px;">
 						<div class="box-header with-border">
-							<h3 class="box-title">REGISTRAR TIPO DE SANGRE</h3>
+							<h3 class="box-title">EDIT DISTRITO</h3>
 						</div>
 						<div class="box-body form-horizontal">
 							<div class="form-group">
 								<label class="col-sm-2 control-label" style="float: left;">Nombre</label>
 								<div class="col-sm-10" style="float: left;">
-									<input type="text" class="form-control"
-										placeholder="Ingresar nombre" th:field="*{nombre}">
+									<input type="text" class="form-control" th:field="*{nombre}" 
+										placeholder="Ingresar nombre">
 								</div>
 							</div>
 						</div>
@@ -31,8 +30,8 @@
 				<div class="col-md-12">
 					<div class="box">
 						<div class="box-footer">
-							<button type="submit" class="btn btn-warning">Crear</button>
-							<a th:href="@{'/admin/tipo-de-sangre'}" class="btn btn-default">Cancelar</a>
+							<button type="submit" class="btn btn-warning">Guardar</button>
+							<a th:href="@{'/admin/distrito'}" class="btn btn-default">Cancelar</a>
 						</div>
 					</div>
 				</div>
@@ -41,6 +40,6 @@
 	</div>
 </body>
 <script>
-$(".tiposangre").addClass( "active" );
+$(".sidebar-menu>li>a.distrito").addClass( "active" );
 </script>
 </html>
