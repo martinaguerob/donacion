@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "hospitales")
 public class Hospital {
@@ -38,10 +40,12 @@ public class Hospital {
 
 	@Column(name = "horario_apartura")
 	@Temporal(TemporalType.TIME)
+	@DateTimeFormat(pattern = "HH:mm")
 	private Date horarioApertura;
 
 	@Column(name = "horario_cierre")
 	@Temporal(TemporalType.TIME)
+	@DateTimeFormat(pattern = "HH:mm")
 	private Date horarioCierre;
 
 	@OneToMany(mappedBy = "hospital")
