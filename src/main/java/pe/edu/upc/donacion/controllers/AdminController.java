@@ -155,4 +155,49 @@ public class AdminController {
 		}
 		return "redirect:/admin/tipo-de-sangre";
 	}
+	
+	@GetMapping("caso")
+	public String caso(Model model) {
+		try {
+			List<Caso> casos = casoService.findAll();
+			model.addAttribute("casos", casos);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+		return "/administrador/caso/inicio";
+	}
+
+	@GetMapping("caso/crear")
+	public String crearCaso(Model model) {
+		Caso caso = new Caso();
+		try {
+			model.addAttribute("caso", caso);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+		return "/administrador/caso/crear";
+	}
+
+	@PostMapping("caso/save")
+	public String saveCaso(@ModelAttribute("caso") Caso caso,
+			@RequestParam(name = "file", required = false) MultipartFile foto) {
+		if (!foto.isEmpty()) {
+			String ruta = "src/main/resources/static/images/casos";
+
+			try {
+				byte[] bytes = foto.getBytes();
+				Path rutaAbsoulta = Paths.get(ruta + "//" + foto.getOriginalFilename());
+				Files.write(rutaAbsoulta, bytes);
+				caso.setUrlImage(foto.getOriginalFilename());
+				casoService.save(caso);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.err.println(e.getMessage());
+			}
+		}
+		return "redirect:/admin/caso";
+	}
 }
