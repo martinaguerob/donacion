@@ -1,6 +1,9 @@
+.img-logo{
+	width: 100px;
+}
 .options>li{
 	display: inline-block;
-	padding: 60px 10px 10px 10px;
+	padding: 40px 10px 10px 10px;
 }
 .options>li>a{
 	text-decoration: none;
@@ -9,4 +12,24 @@
     font-family: 'Montserrat';
     font-weight: 500;
     color: #444242;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+.options>li>a:hover{
+	color: #DD1F26;
+	border-bottom: 2px solid #DD1F26;
+}
+
+.bg-nav{
+	position: fixed;
+	z-index: 9;
+}
+.bg-menu{
+	background-color: rgba(255,255,255,0.7);
+	transition: .7s;
+}
+.banner{top:0;}
+.banner img{
+	width: 100%;
+	height: auto;
 }

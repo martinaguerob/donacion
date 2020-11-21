@@ -3,44 +3,61 @@
 	th:replace="~{layout :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Dona una vida</title>
 <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 <body>
+
 	<section class="bg-fondo">
 		<div class="casos-index">
-			<div class="container">
-				<div class="row p-section h-center">
-					<div class="col-md-6">
-						<div class="cd-casos-index">
-							<div class="cd-name-caso">
-								<h3>Rosa Melendez</h3>
+			<div id="carouselExampleControls" class="carousel slide"
+				data-ride="carousel">
+				<div class="carousel-inner none" th:class="carousel-inner"
+					role="listbox">
+					<div class="carousel-item active"
+						th:each="caso, iterStat : ${casos}"
+						th:class="${iterStat.first} ? 'carousel-item active' : 'carousel-item'">
+						<div class="w-100 d-block carousel-photo">
+							<div class="container">
+								<div class="row p-section h-center">
+									<div class="col-md-6 col-lg-6">
+										<div class="cd-casos-index">
+											<div class="cd-name-caso">
+												<h3 th:text="${caso.nombresApellidos}"></h3>
+											</div>
+											<div class="cd-edad-caso">
+												<h5 th:text="${caso.edad} + años">años</h5>
+											</div>
+											<div class="cd-text-caso">
+												<p th:text="${caso.descripcion}"></p>
+											</div>
+											<div class="cd-btn-dona-una-vida-caso">
+												<a class="btn-go-generar-cita" th:href="@{'/generar-cita'}">Dona
+													una vida</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6 col-lg-6">
+										<div class="cd-img-caso">
+											<img th:src="@{/images/casos/{image}(image=${caso.urlImage})}"
+												style="width: 100%; height: auto;" />
+										</div>
+									</div>
+								</div>
 							</div>
-							<div class="cd-edad-caso">
-								<h5>27 años</h5>
-							</div>
-							<div class="cd-text-caso">
-								<p>Rosa de 28 años, profesora de educación inicial, tiene
-									una hija pequeña y una familia muy unida. En sus tiempos libres
-									es voluntaria de lectura en albergues del país. Quedo
-									embarazada de su segunda hija, y tenia un embarazo de lo mas
-									normal. Sufrió una hemorragia post-parto, la causa de muerte
-									mas frecuente en los embarazos, por lo cual necesita de tu
-									ayuda ¿Ayudarías a esta madre ejemplar?</p>
-							</div>
-							<div class="cd-btn-dona-una-vida-caso">
-								<a class="btn-go-generar-cita" th:href="@{'/generar-cita'}">Dona una vida</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="cd-img-caso">
-							<img alt="" th:src="@{/images/casos/caso-1.png}"
-								style="width: 100%; height: auto;" />
 						</div>
 					</div>
 				</div>
+				<a class="carousel-control-prev" href="#carouselExampleControls"
+					role="button" data-slide="prev"> <span
+					class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+					class="sr-only">Previous</span>
+				</a> <a class="carousel-control-next" href="#carouselExampleControls"
+					role="button" data-slide="next"> <span
+					class="carousel-control-next-icon" aria-hidden="true"></span> <span
+					class="sr-only">Next</span>
+				</a>
 			</div>
 		</div>
 
@@ -108,7 +125,8 @@
 					</div>
 					<div class="col-md-6">
 						<div class="cd-btn-dona">
-							<a class="btn-go-generar-cita" th:href="@{'/generar-cita'}">Dona una vida</a>
+							<a class="btn-go-generar-cita" th:href="@{'/generar-cita'}">Dona
+								una vida</a>
 						</div>
 					</div>
 				</div>
@@ -116,7 +134,5 @@
 		</div>
 	</section>
 </body>
-
-<script>
-</script>
+<script></script>
 </html>

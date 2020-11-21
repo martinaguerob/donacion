@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pe.edu.upc.donacion.models.entities.Cita;
@@ -42,6 +44,11 @@ public class RegistroCitaController {
 			System.err.println(e.getMessage());
 		}
 		return "/registro-citas/inicio";
+	}
+	
+	@PostMapping("search")
+	public String search(@ModelAttribute("donante") Integer id, Model model) {
+		return "registro-citas/show";
 	}
 
 }

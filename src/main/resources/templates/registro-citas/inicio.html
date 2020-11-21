@@ -8,6 +8,32 @@
 <link rel="stylesheet" th:href="@{/css/generar-cita.css}">
 </head>
 <body>
+	<section class="buscar-usuario">
+		<div class="container">
+			<div class="row not-margin h-center">
+				<form th:action="@{/registro-cita/search}" th:object="${donante}"
+				method="post" class="full-width" style="width: 100%;">
+					<div class="col-sm-12">
+						<div class="col-sm-8">
+							<div class="form-group">
+								<select class="form-control" id="donante">
+									<option value="0">Nombres y apellidos</option>
+									<option th:each="donante : ${donantes}"
+										th:value="${donante.id}" th:text="${donante.nombresApellidos}">
+									</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group">
+								<button type="submit" class="btn btn-warning">Buscar</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
 	<div class="registro-citas">
 		<div class="container">
 			<div class="row">
@@ -46,44 +72,6 @@
 			</div>
 		</div>
 	</div>
-    <div class="registro-citas">
-        <div class="container">
-            <div class="row">
-                <div class="cd-registro">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 <script></script>
 </html>
