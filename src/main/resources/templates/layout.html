@@ -61,8 +61,12 @@
 		var topPos = d.offsetTop;
 		if(window.pageYOffset >=100){
 			$("#nav-wrapper").addClass("bg-menu");
+			$(".img-logo").css("width","75px");
+			$(".options>li").css("padding","25px 10px 10px 10px");
 		}else{
 			$("#nav-wrapper").removeClass("bg-menu");
+			$(".img-logo").css("width","100px");
+			$(".options>li").css("padding","40px 10px 10px 10px");
 		}
 		});
 	

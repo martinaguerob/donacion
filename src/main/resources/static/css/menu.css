@@ -1,9 +1,11 @@
 .img-logo{
 	width: 100px;
+	transition: .7s;
 }
 .options>li{
 	display: inline-block;
 	padding: 40px 10px 10px 10px;
+	transition: .7s;
 }
 .options>li>a{
 	text-decoration: none;
