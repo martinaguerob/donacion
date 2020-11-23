@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html
+	th:replace="~{layout_admin :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Admin | Cita médica</title>
+<link rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="card full-width">
+				<div class="card-header title-header">CITAS MÉDICAS</div>
+				<div class="card-body">
+					<table class="table">
+						<thead class="card-header">
+							<tr>
+								<th class="text-center" style="width: 120px;" scope="col">Fecha</th>
+								<th scope="col">Nombre del donante</th>
+								<th scope="col">Hospital</th>
+								<th class="text-center" style="width: 120px;" scope="col">Estado</th>
+							</tr>
+						</thead>
+						<tbody class="card-body">
+							<tr th:each="cita : ${citas}">
+								<th class="text-center" style="width: 60px;"
+									th:text="${cita.fechaCita}" scope="row">.</th>
+								<td th:text="${cita.donante.nombresApellidos}"></td>
+								<td th:text="${cita.hospital.nombre}"></td>
+								<td class="text-center" style="width: 120px;">Estado</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+$(".citas").addClass( "active" );
+</script>
+</html>

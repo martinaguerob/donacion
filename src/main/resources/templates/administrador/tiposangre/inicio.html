@@ -3,41 +3,38 @@
 	th:replace="~{layout_admin :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Tipo de sangre</title>
 <link rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
-				<div class="box">
-					<div class="box-header with-border">
-						<h3 class="box-title">TIPO DE SANGRE</h3>
-						<div class="box-tools">
-							<div class="input-group input-group-sm">
-								<a th:href="@{'/admin/tipo-de-sangre/crear'}">Agregar</a>
-							</div>
-						</div>
-					</div>
-					<div class="box-body">
-						<table class="table">
-							<thead>
-								<tr>
-									<th class="text-center" style="width: 60px;" scope="col">#</th>
-									<th scope="col">Nombre</th>
-									<th class="text-center" style="width: 120px;" scope="col">Acción</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="tipoSangre : ${tiposSangres}">
-									<th class="text-center" style="width: 60px;" th:text="${tipoSangre.id}" scope="row">.</th>
-									<td th:text="${tipoSangre.nombre}"></td>
-									<td class="text-center" style="width: 120px;"><a th:href="@{'/admin/tipo-de-sangre/edit/' + ${tipoSangre.id}}" class="btn-edit"><i class="fas fa-edit"></i></a></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+			<div class="card full-width">
+				<div class="card-header title-header">
+					TIPOS DE SANGRE<a th:href="@{'/admin/tipo-de-sangre/crear'}"
+						class="btn-crear"><i class="fas fa-plus"></i> Crear</a>
+				</div>
+				<div class="card-body">
+					<table class="table">
+						<thead class="card-header">
+							<tr>
+								<th class="text-center" style="width: 60px;" scope="col">#</th>
+								<th scope="col">Nombre</th>
+								<th class="text-center" style="width: 120px;" scope="col">Acción</th>
+							</tr>
+						</thead>
+						<tbody class="card-body">
+							<tr th:each="tipoSangre : ${tiposSangres}">
+								<th class="text-center" style="width: 60px;"
+									th:text="${tipoSangre.id}" scope="row">.</th>
+								<td th:text="${tipoSangre.nombre}"></td>
+								<td class="text-center" style="width: 120px;"><a
+									th:href="@{'/admin/tipo-de-sangre/edit/' + ${tipoSangre.id}}"
+									class="btn-edit"><i class="fas fa-edit"></i></a></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

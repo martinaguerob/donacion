@@ -3,85 +3,85 @@
 	th:replace="~{layout_admin :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>Caso | Registrar</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Caso | Crear</title>
 <link rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<div class="row">
-			<form th:action="@{/admin/caso/save}" th:object="${caso}" method="post" enctype="multipart/form-data" class="full-width" style="width: 100%;">
-				<div class="col-md-12">
-					<div class="box box-warning" style="padding-bottom: 20px;">
-						<div class="box-header with-border">
-							<h3 class="box-title">REGISTRAR CASOS</h3>
-						</div>
-						<div class="box-body form-horizontal">
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input type="text" class="form-control"
-										placeholder="Ingresar nombre" th:field="*{nombresApellidos}">
+			<div class="card full-width">
+				<div class="card-header title-header">CASO</div>
+				<div class="card-body">
+					<div class="card border-light col-md-12 not-padding">
+						<div class="card-header title-header">Crear caso:</div>
+						<div class="card-body">
+							<form th:action="@{/admin/caso/save}" th:object="${caso}"
+								method="post" enctype="multipart/form-data" class="full-width">
+								<div class="form-group">
+									<label class="col-sm-2 label-form">Nombre:</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-form"
+											th:field="*{nombresApellidos}" placeholder="Ingresar nombre" required="required">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input type="text" class="form-control"
-										placeholder="Ingresar titulo" th:field="*{titulo}">
+								<div class="form-group">
+									<label class="col-sm-2 label-form">Título:</label>
+									<div class="col-sm-4">
+										<input type="text" class="form-control input-form"
+											th:field="*{titulo}" placeholder="Ingresar título" required="required">
+									</div>
+									<label class="col-sm-2 label-form">Edad:</label>
+									<div class="col-sm-4">
+										<input type="text" class="form-control input-form"
+											th:field="*{edad}" placeholder="Ingresar edad" required="required">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input type="text" class="form-control"
-										placeholder="Ingresar edad" th:field="*{edad}">
+								<div class="form-group">
+									<label class="col-sm-2 label-form">Banner:</label>
+									<div class="col-sm-4">
+										<input type="text" class="form-control input-form"
+											th:field="*{banner}" placeholder="Ingresar título" required="required">
+									</div>
+									<label class="col-sm-2 label-form">Posición:</label>
+									<div class="col-sm-4">
+										<input type="text" class="form-control input-form"
+											th:field="*{posicion}" placeholder="Ingresar posición" required="required">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input type="text" class="form-control"
-										placeholder="Ingresar al banner" th:field="*{banner}">
+								<div class="form-group">
+									<label class="col-sm-2 label-form">Nombre:</label>
+									<div class="col-sm-10">
+										<textarea rows="5" class="form-control input-form" cols=""
+											placeholder="Ingresar descripcion" th:field="*{descripcion}" required="required"></textarea>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input type="text" class="form-control"
-										placeholder="Ingresar posición" th:field="*{posicion}">
+								<div class="form-group">
+									<label class="col-sm-2 label-form">Imagen:</label>
+									<div class="col-sm-10">
+										<input type="file" name="file" id="imgInputImagen" class="form-control input-form">
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<textarea rows="4" class="form-control" cols=""
-										placeholder="Ingresar descripcion" th:field="*{descripcion}"></textarea>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input type="file" name="file" id="imgInputImagen"
-										placeholder="Ingresar imagen">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="inputImagen" class="col-sm-2 control-label"></label>
+								<div class="form-group">
+								<label for="inputImagen" class="col-sm-2"></label>
 								<div class="col-sm-10">
-									<p class="help-block">Tamaño de imagen 400x500 px</p>
+									<p class="help-label">Tamaño de imagen 400x500 px</p>
 									<img id="imgChange" class="" style="max-width: 100%;" src=""
 										alt="">
 								</div>
 							</div>
+								<div class="form-group not-margin">
+									<button type="submit" class="btn-form-save">Crear</button>
+									<a th:href="@{'/admin/caso'}" class="btn-form-cancel">Cancelar</a>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-12">
-					<div class="box">
-						<div class="box-footer">
-							<button type="submit" class="btn btn-warning">Registrar</button>
-							<a th:href="@{'/admin/caso'}" class="btn btn-default">Cancelar</a>
-						</div>
-					</div>
-				</div>
-			</form>
+			</div>
 		</div>
 	</div>
+	
 </body>
 <script>
 $(".caso").addClass( "active" );

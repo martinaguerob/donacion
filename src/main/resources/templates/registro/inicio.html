@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html
+	th:replace="~{layout_usuario :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Dona una vida</title>
+<link rel="stylesheet" th:href="@{/css/registro-usuario.css}">
+</head>
+<body>
+	<section class="usuario">
+		<div class="container">
+			<div class="row">
+				<form action="" style="width: 100%;">
+					<div class="cd-nombre user">
+						<input type="text" placeholder="Martín Aguero Barreto"
+							disabled="disabled">
+					</div>
+					<div class="cd-datos user">
+						Email: <input type="email" th:value="maguerob" disabled="disabled">
+					</div>
+					<div class="cd-datos user">
+						Número de documento: <input type="text" class="input-user" th:value="71717171" disabled="disabled" id="input-user">
+					</div>
+					<div class="cd-datos user">
+						Fecha de nacimiento: <input type="date" class="input-user" th:value="02/11/1993" disabled="disabled" id="input-user">
+					</div>
+					<div class="cd-datos user">
+						Dirección: <input type="text" class="input-user" th:value="Av" disabled="disabled" id="input-user">
+					</div>
+					<div class="cd-datos user">
+						Distrito: <select class="input-user" disabled="disabled" id="input-user">
+							<option value="0"></option>
+							<option th:each="distrito: ${distritos}"
+								th:value="${distrito.id}" th:text="${distrito.nombre}">
+							</option>
+						</select>
+					</div>
+					<div class="cd-datos user" >
+						Tipo de sangre: <select class="input-user" disabled="disabled" id="input-user">
+							<option value="0"></option>
+							<option th:each="tipoSangre: ${tipoSangres}"
+								th:value="${tipoSangre.id}" th:text="${tipoSangre.nombre}">
+							</option>
+						</select>
+					</div>
+					<div class="cd-edit-datos">
+						<a class="btn-editar" onclick="editar();">Editar</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+</body>
+<script th:inline="javascript" type="text/javascript">
+$(".dashboard").addClass("active");
+dashboard
+function editar(){
+	$(".input-user").addClass("input-active");
+}
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html
+	th:replace="~{layout_admin :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Admin | Unidades de sangre</title>
+<link rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="card full-width">
+				<div class="card-header title-header">UNIDADES DE SANGRE<a th:href="@{'/admin/unidades-de-sangre/crear'}" class="btn-crear"><i class="fas fa-plus"></i> Crear</a></div>
+				<div class="card-body">
+					<table class="table">
+						<thead class="card-header">
+							<tr>
+								<th class="text-center" style="width: 60px;" scope="col">Id</th>
+								<th scope="col">Número de Lote</th>
+								<th scope="col">Fecha de vencimiento</th>
+							</tr>
+						</thead>
+						<tbody class="card-body">
+							<tr th:each="unidadSangre : ${unidadesSangre}">
+								<th class="text-center" style="width: 60px;"
+									th:text="${unidadSangre.id}" scope="row">.</th>
+								<td th:text="${unidadSangre.numeroLote}"></td>
+								<td th:text="${unidadSangre.fechaVencimiento}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+$(".unidadessangre").addClass( "active" );
+</script>
+</html>

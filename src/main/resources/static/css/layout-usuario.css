@@ -1,0 +1,27 @@
+.registro-usuario{
+	padding: 40px 0px;
+}
+.cd-menu-registro{
+	text-align: center;
+	padding: 20px;
+	background: #ffffff;
+	margin-bottom: 30px;
+}
+.cd-menu-registro h5{
+	font-family: 'Montserrat';
+	font-weight: 500px;
+	color: #4D4D4D;
+	font-size: 15px;
+}
+.cd-menu-registro i{
+	font-size: 80px;
+	color: #4D4D4D;
+}
+
+.cd-menu-registro i:hover{
+	color: #de1f26;
+}
+
+.active i, .active h5{
+	color: #de1f26;
+}
