@@ -3,14 +3,16 @@
 	th:replace="~{layout_admin :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Caso | Editar</title>
 <link rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<div class="row">
-			<form th:action="@{/admin/caso/update/}+${caso.id}" th:object="${caso}" method="post" enctype="multipart/form-data" class="full-width" style="width: 100%;">
+			<form th:action="@{/admin/caso/update/}+${caso.id}"
+				th:object="${caso}" method="post" enctype="multipart/form-data"
+				class="full-width" style="width: 100%;">
 				<div class="col-md-12">
 					<div class="box box-warning" style="padding-bottom: 20px;">
 						<div class="box-header with-border">
@@ -18,44 +20,47 @@
 						</div>
 						<div class="box-body form-horizontal">
 							<div class="form-group">
-								<div class="col-sm-12">
+								<label class="col-sm-2 control-label">Nombre:</label>
+								<div class="col-sm-10">
 									<input type="text" class="form-control"
 										placeholder="Ingresar nombre" th:field="*{nombresApellidos}">
 								</div>
 							</div>
 							<div class="form-group">
-								<div class="col-sm-12">
+								<label class="col-sm-2 control-label">Título:</label>
+								<div class="col-sm-4">
 									<input type="text" class="form-control"
 										placeholder="Ingresar titulo" th:field="*{titulo}">
 								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
+								<label class="col-sm-2 control-label">Edad:</label>
+								<div class="col-sm-4">
 									<input type="text" class="form-control"
 										placeholder="Ingresar edad" th:field="*{edad}">
 								</div>
 							</div>
 							<div class="form-group">
-								<div class="col-sm-12">
+								<label class="col-sm-2 control-label">Banner:</label>
+								<div class="col-sm-4">
 									<input type="text" class="form-control"
 										placeholder="Ingresar al banner" th:field="*{banner}">
 								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
+								<label class="col-sm-2 control-label">Posición:</label>
+								<div class="col-sm-4">
 									<input type="text" class="form-control"
 										placeholder="Ingresar posición" th:field="*{posicion}">
 								</div>
 							</div>
 							<div class="form-group">
-								<div class="col-sm-12">
-									<textarea rows="4" class="form-control" cols=""
+								<label class="col-sm-2 control-label">Descripción:</label>
+								<div class="col-sm-10">
+									<textarea rows="5" class="form-control" cols=""
 										placeholder="Ingresar descripcion" th:field="*{descripcion}"></textarea>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<div class="col-sm-12">
+								<label class="col-sm-2 control-label">Imagen:</label>
+								<div class="col-sm-10">
 									<input type="file" name="file" id="imgInputImagen"
 										placeholder="Ingresar imagen">
 								</div>
@@ -64,7 +69,7 @@
 								<label for="inputImagen" class="col-sm-2 control-label"></label>
 								<div class="col-sm-10">
 									<p class="help-block">Tamaño de imagen 400x500 px</p>
-									<img id="imgChange" class="" style="max-width: 100%;" th:src="@{/images/casos}+${urlImage}"
+									<img id="imgChange" class="" style="max-width: 100%;" src=""
 										alt="">
 								</div>
 							</div>
@@ -74,8 +79,8 @@
 				<div class="col-md-12">
 					<div class="box">
 						<div class="box-footer">
-							<button type="submit" class="btn btn-warning">Guardar</button>
-							<a th:href="@{'/admin/caso'}" class="btn btn-default">Cancelar</a>
+							<button type="submit" class="btn btn-crear">Guardar</button>
+							<a th:href="@{'/admin/caso'}" class="	btn btn-default">Cancelar</a>
 						</div>
 					</div>
 				</div>

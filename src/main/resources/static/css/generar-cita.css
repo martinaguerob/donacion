@@ -8,25 +8,41 @@
 	font-family: 'Montserrat';
 	font-size: 15px;
 }
-.cd-registrar{
-	width: 50%;
-	text-align: center;
-	margin: 0 auto;
-	padding: 25px;
-}
 .cd-form-registrar{
 	margin-bottom: 20px;
 }
-.input-text, select{
+.img-generar{
+	width: 100%;
+	height: auto;
+}
+.input-text, .select-cita{
 	width: 100%;
 	color: #333333 !important;
 	font-family: 'Montserrat';
+	font-size: 15px;
+	background: transparent;
+	border: 0px solid #fff;
+	border-bottom: 1px solid #DD1F26;
+}
+.input-text:active, .select-cita:active{
+	background-color: transparent;
+}
+.input-text:focus, .select-cita:focus{
+	background-color: transparent !important;
+	border: 0px solid #fff !important;
+}
+.p-right-6{
+	padding: 0px 5px 0px 0px;
+}
+.p-left-6{
+	padding: 0px 0px 0px 5px;
 }
 .btn-registrar{
 	background-color: #DD1F26;
 	color: #ffffff;
-	padding: 10px 25px;
+	padding: 8px 20px;
 	border: 1px solid #DD1F26;
+	border-radius: 5px;
 	box-shadow: none;
 	font-family: 'Montserrat';
 	transition: .8s;

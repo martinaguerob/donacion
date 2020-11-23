@@ -40,8 +40,8 @@
 	<!-- End-Menú -->
 
 	<section class="admin">
-		<div class="container full-width h100">
-			<div class="row h100">
+		<div class="container-full full-width h100">
+			<div class="row h100 not-margin">
 				<div class="col-md-2 not-padding cd-panel">
 					<aside class="main-sidebar">
 						<ul class="sidebar-menu">
@@ -50,6 +50,9 @@
 							<li><a class="hospital" th:href="@{'/admin/hospital'}"><i class="fas fa-hospital"><span>Hospitales</span></i></a></li>
 							<li><a class="tiposangre" th:href="@{'/admin/tipo-de-sangre'}"><i class="fas fa-tint"><span>Tipos de sangre</span></i></a></li>
 							<li><a class="caso" th:href="@{'/admin/caso'}"><i class="fas fa-procedures"><span>Casos</span></i></a></li>
+							<li class="header">DONANTES</li>
+							<li><a class="citas" th:href="@{'/admin/cita'}"><i class="fas fa-archive"><span>Citas</span></i></a></li>
+							<li><a class="unidadessangre" th:href="@{'/admin/unidades-de-sangre'}"><i class="fas fa-vial"><span>Unidades de sangre</span></i></a></li>
 						</ul>
 					</aside>
 				</div>

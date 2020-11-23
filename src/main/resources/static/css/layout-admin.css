@@ -30,7 +30,8 @@ div.content {
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 3px;
-	padding: 10px;
+	padding: 15px 10px 0px 10px;
+	display: grid;
 }
 
 .box-header {
@@ -50,19 +51,24 @@ div.content {
 	top: 5px;
 }
 
-.box-title{
+.box-title {
+	margin: 0px;
 	font-family: 'Montserrat';
 	font-weight: 600;
 }
-.table>thead>tr>th{
+
+.table>thead>tr>th {
 	font-family: 'Montserrat';
 	color: #444242;
 	text-transform: uppercase;
-	font-weight: 600;
+	font-weight: 500;
+	font-size: 15px;
 }
-.table>tbody>tr>td{
+
+.table>tbody>tr>td {
 	font-family: 'Montserrat';
-	color: #444242;
+	font-size: 15px;
+	color: #444;
 	font-weight: normal;
 }
 
@@ -76,31 +82,93 @@ div.content {
 	background-color: #fff;
 }
 
-
-
-.input-group a {
-	text-decoration: none !important;
-	padding: 10px 20px;
-	background: #DD1F26;
-	color: #ffffff !important;
-	border-radius: 7px;
-	font-family: 'Montserrat';
+.form-group {
+	display: flex;
 }
 
 .form-group:before {
 	display: table;
 	content: " ";
 }
-.btn-edit>i{
-	color: #ecaa11;
+
+.btn-edit>i {
+	color: #6BDFCB;
+}
+.title-header{
+	font-family: 'Montserrat';
+	font-weight: 600;
+	font-size: 15px;
+	color: #000000;
+}
+.title-header .btn-crear{
+	font-size: 13px;
+	color: #ffffff;
+	background: #6BDFCB;
+	font-weight: normal !important;
+	border-radius: 5px;
+	border: none;
+	padding: 3px 8px;
+}
+.title-header .btn-crear:hover{
+	background: #DD1F26;
+	cursor: pointer;
+}
+.label-form{
+	font-family: 'Montserrat';
+	font-size: 13px;
+	text-align: right;
+	padding: 8px 0px;
+	color: #444;	
+}
+.help-label{
+	font-family: 'Montserrat';
+	font-size: 11px;
+	color: #444;
+}
+.input-form{
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #dee2e6;
+	font-family: 'Montserrat';
+	width: 100%;
+	padding: 5px 5px;
+	font-size: 13px;
+	color: #444;
+}
+.btn-form-save{
+	color: #fff;
+	background-color: #6BDFCB;
+	border: none;
+	font-family: 'Montserrat';
+	font-size: 12px;
+	padding: 8px 12px;
+	border-radius: 5px;
+	transition: .7s;
+}
+.btn-form-save:hover{
+	background: #DD1F26;
+}
+.btn-form-cancel{
+	margin-left: 10px;
+	color: #000000;
+	background-color: #F7F7F7;
+	border: none;
+	font-family: 'Montserrat';
+	font-size: 12px;
+	padding: 8px 12px;
+	transition: .7s;
+}
+.btn-form-cancel:hover{
+	color: #000000;
+	cursor: pointer;
 }
 
 /*Formulario*/
 .form-horizontal .control-label {
-    padding-top: 7px;
-    margin-bottom: 0;
-    text-align: right;
-    font-family: 'Montserrat';
+	padding-top: 7px;
+	margin-bottom: 0;
+	text-align: right;
+	font-family: 'Montserrat';
 }
 
 .btn {
@@ -113,6 +181,16 @@ div.content {
 	white-space: nowrap;
 	vertical-align: middle;
 	font-family: 'Montserrat';
+}
+
+.btn-crear {
+	background-color: #6BDFCB;
+	color: #ffffff;
+	font-family: 'Montserrat';
+	transition: .7s;
+}
+
+.btn-crear:hover {
 	background-color: #DD1F26;
 	color: #fff;
 }
@@ -124,3 +202,109 @@ div.content {
 	font-family: 'Montserrat';
 }
 
+/*DONANTE - CITA */
+
+.tab-donante{
+	font-family: 'Montserrat';
+	color: #444;
+}
+.title-header a{
+	float: right;
+	font-family: 'Montserrat';
+	color: #444;
+	font-weight: normal !important;
+	border-bottom: 0.5px solid #444;
+}
+.nav-tabs .nav-link.active{
+	color: #6BDFCB !important;
+}
+.panel-cita {
+	padding: 20px;
+}
+
+.bg-green {
+	background-color: #6BDFCB;
+}
+
+.name-donante{
+	font-family: 'Montserrat';
+	font-size: 15px;
+	color: #444;
+}
+.dato-donante{
+	font-family: 'Montserrat';
+	font-size: 13px;
+	color: #444;
+}
+.dato-donante span{
+	color: #000000;
+}
+.title-dato-cita{
+	font-family: 'Montserrat';
+	font-weight: 500;
+	font-size: 15px;
+	color: #ffffff;
+}
+.datos-cita h5{
+	font-family: 'Montserrat' !important;
+	font-size: 14px!important;
+	color: #ffffff;
+}
+.datos-cita p{
+	font-family: 'Montserrat' !important;
+	font-size: 13px !important;
+	color: #ffffff;
+}
+.label-cita, .label-donacion {
+	font-family: 'Montserrat';
+	font-size: 13px;
+	text-align: right;
+	padding: 8px 0px;
+	color: #444;
+}
+
+.input-cita, .input-donacion {
+	width: 100%;
+	background-color: transparent;
+	padding: 5px 5px;
+	font-size: 13px;
+	font-family: 'Montserrat';
+	font-weight: 600;
+	border: none;
+	color: #444;
+}
+
+.btn-save-ficha , .btn-edit-ficha, .btn-save-donacion{
+	color: #fff;
+	background-color: #6BDFCB;
+	border: none;
+	font-family: 'Montserrat';
+	font-size: 12px;
+	padding: 8px 12px;
+	transition: .7s;
+	
+}
+.btn-cancel-ficha{
+	margin-left: 10px;
+	color: #000000;
+	background-color: #F7F7F7;
+	border: none;
+	font-family: 'Montserrat';
+	font-size: 12px;
+	padding: 8px 12px;
+	transition: .7s;
+}
+.btn-save-ficha:hover, .btn-save-donacion:hover{
+	background: #DD1F26;
+}
+.btn-cancel-ficha:hover{
+	color: #000000;
+}
+.btn-edit-ficha:hover{
+	color: #ffffff;
+	cursor: pointer;
+}
+.input-cita-active{
+	border-bottom: 1px solid #dee2e6;
+	transition: .7s;
+}

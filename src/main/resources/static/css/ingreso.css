@@ -1,0 +1,50 @@
+.ingreso{
+	padding: 50px 0px 0px 0px;
+}
+.cd-ingreso{
+	max-width: 100%;
+}
+.cd-img img{
+	width: 100%;
+	height: auto;
+}
+
+.login, .registrar{
+	padding: 0 40px;
+}
+.login h3, .registrar h3{
+	font-family: 'Montserrat';
+	font-weight: 500;
+	color: #000000;
+	font-size: 25px;
+	margin-bottom: 20px;
+}
+.cd-form-login, .cd-form-registrar{
+	margin-bottom: 15px;
+}
+.cd-form-login input, .cd-form-registrar input{
+	width: 100%;
+	background: #C4C1C1;
+	padding: 10px 15px;
+	border: 0px solid #fff;
+}
+.cd-form-login input::placeholder, .cd-form-registrar input::placeholder{
+	color: #4D4D4D;
+	font-family: 'Montserrat';
+	font-size: 15px;
+}
+.cd-form-login button, .cd-form-registrar button{
+	border: none;
+	font-family: 'Montserrat';
+	font-size: 15px;
+	font-weight:500;
+	background-color: #6BDFCB;
+	color: #4D4D4D;
+	width: 100%;
+	padding: 10px 15px;
+	transition: .7s;
+}
+.cd-form-login button:hover, .cd-form-registrar button:hover{
+	background-color: #de1f26;
+	color: #fff;
+}

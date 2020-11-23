@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html
+	th:replace="~{layout_admin :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Unidad de sangre | Crear</title>
+<link rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="card full-width">
+				<div class="card-header title-header">UNIDAD DE SANGRE</div>
+				<div class="card-body">
+					<div class="card border-light col-md-9 not-padding">
+						<div class="card-header title-header">Crear:</div>
+						<div class="card-body">
+							<form action="" class="full-width">
+								<div class="form-group">
+									<label class="col-sm-3 label-form">Número de lote:</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control input-form">
+									</div>
+									<label class="col-sm-3 label-form">Fecha de vencimiento:</label>
+									<div class="col-sm-3">
+										<input type="date" class="form-control input-form">
+									</div>
+								</div>
+								<div class="form-group">
+									<button type="button" class="btn-form-save">Crear</button>
+									<a th:href="@{'/admin/unidades-de-sangre'}" class="btn-form-cancel">Cancelar</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+$(".unidadessangre").addClass( "active" );
+</script>
+</html>

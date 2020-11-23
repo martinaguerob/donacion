@@ -2,7 +2,7 @@ a { text-decoration: none !important; }
 ul { list-style-type: none; padding: 0; }
 .not-margin{margin: 0px;}
 .not-padding{padding: 0px;}
-.full-width{max-width: 100%;}
+.full-width{width: 100%; padding: 0px;}
 
 .bg-fondo{ background-color: #f1f4f7;}
 .bg-white{ background-color: #ffffff;}
@@ -11,5 +11,5 @@ ul { list-style-type: none; padding: 0; }
 
 .h-center{
 	margin: 0 auto;
-	width: 80%;
+	width: 85%;
 }

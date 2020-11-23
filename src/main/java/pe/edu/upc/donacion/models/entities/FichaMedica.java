@@ -28,6 +28,9 @@ public class FichaMedica {
 	
 	@Column(name = "estado", nullable = false)
 	private Boolean estado;
+	
+	@Column(name = "comentarios", nullable = false)
+	private String comentarios;
 
 	public Integer getId() {
 		return id;
@@ -68,5 +71,12 @@ public class FichaMedica {
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
+	
+	public String getComentarios() {
+		return comentarios;
+	}
 
+	public void setComentarios(String comentarios) {
+		this.comentarios = comentarios;
+	}
 }

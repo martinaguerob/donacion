@@ -3,77 +3,76 @@
 	th:replace="~{layout_admin :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>Hospital | Registrar</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Hospital | Crear</title>
 <link rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<div class="row">
-			<form th:action="@{/admin/hospital/save}" th:object="${hospital}"
-				method="post" class="full-width" style="width: 100%;">
-				<div class="col-md-12">
-					<div class="box box-warning" style="padding-bottom: 20px;">
-						<div class="box-header with-border">
-							<h3 class="box-title">REGISTRAR HOSPITAL</h3>
-						</div>
-						<div class="box-body form-horizontal">
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input type="text" class="form-control" th:field="*{nombre}"
-										placeholder="Ingresar nombre">
+			<div class="card full-width">
+				<div class="card-header title-header">HOSPITAL</div>
+				<div class="card-body">
+					<div class="card border-light col-md-12 not-padding">
+						<div class="card-header title-header">Crear hospital:</div>
+						<div class="card-body">
+							<form th:action="@{/admin/hospital/save}" th:object="${hospital}"
+								method="post" class="full-width"
+								style="width: 100%;">
+								<div class="form-group">
+									<label class="col-sm-2 label-form">Nombre:</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-form"
+											th:field="*{nombre}" placeholder="Ingresar nombre" required>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input type="text" class="form-control" th:field="*{direccion}"
-										placeholder="Ingresar dirección">
+								<div class="form-group">
+									<label class="col-sm-2 label-form">Teléfono:</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-form"
+											th:field="*{numeroTelefono}"
+											placeholder="Ingresar número de teléfono" required>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input type="text" class="form-control"
-										th:field="*{numeroTelefono}"
-										placeholder="Ingresar número de teléfono">
+								<div class="form-group">
+									<label class="col-sm-2 label-form">Dirección:</label>
+									<div class="col-sm-4">
+										<input type="text" class="form-control input-form"
+											th:field="*{direccion}" placeholder="Ingresar dirección"
+											required>
+									</div>
+									<label class="col-sm-2 label-form">Distrito:</label>
+									<div class="col-sm-4">
+										<select class="form-control input-form"
+											th:field="*{distrito}" id="hospital" required>
+											<option value="">Distritos</option>
+											<option th:each="distrito: ${distritos}"
+												th:value="${distrito.id}" th:text="${distrito.nombre}">
+											</option>
+										</select>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<select class="form-control" th:field="*{distrito}"
-										id="hospital">
-										<option value="0">Distritos</option>
-										<option th:each="distrito: ${distritos}"
-											th:value="${distrito.id}" th:text="${distrito.nombre}">
-										</option>
-									</select>
+								<div class="form-group">
+									<label class="col-sm-2 label-form">Apertura:</label>
+									<div class="col-sm-4">
+										<input type="time" class="form-control input-form"
+											th:field="*{horarioApertura}" required>
+									</div>
+									<label class="col-sm-2 label-form">Cierre:</label>
+									<div class="col-sm-4">
+										<input type="time" class="form-control input-form"
+											th:field="*{horarioCierre}" required>
+									</div>
 								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input placeholder="Horario de apertura"
-										class="form-control input-text" id="horaApertura" type="time"
-										th:field="*{horarioApertura}" />
+								<div class="form-group not-margin">
+									<button type="submit" class="btn-form-save">Crear</button>
+									<a th:href="@{'/admin/hospital'}" class="btn-form-cancel">Cancelar</a>
 								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input placeholder="Horario de cierre"
-										class="form-control input-text" id="horaCierre" type="time"
-										th:field="*{horarioCierre}" />
-								</div>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-12">
-					<div class="box">
-						<div class="box-footer">
-							<button type="submit" class="btn btn-warning">Crear</button>
-							<a th:href="@{'/admin/hospital'}" class="btn btn-default">Cancelar</a>
-						</div>
-					</div>
-				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 </body>

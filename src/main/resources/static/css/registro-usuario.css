@@ -1,0 +1,50 @@
+.usuario{
+	padding: 30px;
+	background-color: #ffffff;
+}
+.cd-nombre{
+	padding-bottom: 3px;
+	margin-bottom: 15px;
+	width: 100%;
+}
+.user input, .user select{
+	border: none;
+	background: transparent;
+}
+.cd-nombre input{
+	width: 100%;
+	font-family: 'Montserrat';
+	font-size: 25px;
+	color: #000000;
+	border-bottom: 3px solid #DD1F26;
+}
+.cd-datos{
+	font-family: 'Montserrat';
+	font-size: 15px;
+	color: #4D4D4D;
+	margin-bottom: 10px;
+}
+.cd-datos input, .cd-datos select{
+	font-family: 'Montserrat';
+	font-weight: 500;
+	font-size: 15px;
+	color: #000000;
+}
+.input-active{
+	border-bottom: 2px solid #DD1F26 !important;
+}
+.cd-edit-datos{
+	margin: 25px 0px 10px 0px;
+}
+.btn-editar{
+	padding: 5px 20px;
+	border: none;
+	background-color: #DD1F26;
+	border-radius: 5px;
+	color: #ffffff;
+}
+.btn-editar:hover{
+	color: #ffffff;
+	background-color: #6BDFCB;
+	transition: .7s;
+}
