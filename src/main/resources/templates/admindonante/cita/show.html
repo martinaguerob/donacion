@@ -11,15 +11,19 @@
 	<div class="container">
 		<div class="row">
 			<div class="card full-width">
-				<div class="card-header title-header">DONANTE<a th:href="@{'/admin/cita'}"><i class="fas fa-arrow-left"></i>Atrás</a></div>
+				<div class="card-header title-header">
+					DONANTE<a th:href="@{'/admin/cita'}"><i
+						class="fas fa-arrow-left"></i>Atrás</a>
+				</div>
 				<div class="card-body">
 					<nav>
 						<div class="nav nav-tabs" id="nav-tab" role="tablist">
-							<a class="nav-link active tab-donante" id="nav-home-tab" data-toggle="tab"
-								href="#nav-home" role="tab" aria-controls="nav-home"
-								aria-selected="true">Donante</a> <a class="nav-link tab-donante"
-								id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-								role="tab" aria-controls="nav-profile" aria-selected="false">Ficha
+							<a class="nav-link active tab-donante" id="nav-home-tab"
+								data-toggle="tab" href="#nav-home" role="tab"
+								aria-controls="nav-home" aria-selected="true">Donante</a> <a
+								class="nav-link tab-donante" id="nav-profile-tab"
+								data-toggle="tab" href="#nav-profile" role="tab"
+								aria-controls="nav-profile" aria-selected="false">Ficha
 								médica</a> <a class="nav-link tab-donante" id="nav-contact-tab"
 								data-toggle="tab" href="#nav-contact" role="tab"
 								aria-controls="nav-contact" aria-selected="false">Donación</a>
@@ -32,18 +36,23 @@
 								<div class="col-sm-8">
 									<div class="card">
 										<div class="card-body">
-											<h5 class="card-title name-donante">Daniela Razuri</h5>
+											<h5 class="card-title name-donante"
+												th:text="${cita.donante.nombresApellidos}"></h5>
 											<p class="card-text dato-donante">
-												Dirección: <span>Av. La Cantuta 421</span>
+												Dirección: <span
+													th:text="${cita.donante.direccion} + ' - ' + ${cita.donante.distrito.nombre}"></span>
 											</p>
 											<p class="card-text dato-donante">
-												Dirección: <span>Av. La Cantuta 421</span>
+												Número documento: <span
+													th:text="${cita.donante.numeroDocumento}"></span>
 											</p>
 											<p class="card-text dato-donante">
-												Dirección: <span>Av. La Cantuta 421</span>
+												Fecha de nacimiento: <span
+													th:text="${cita.donante.fechaNacimiento}"></span>
 											</p>
 											<p class="card-text dato-donante">
-												Dirección: <span>Av. La Cantuta 421</span>
+												Tipo de sangre: <span
+													th:text="${cita.donante.tipoSangre.nombre}"></span>
 											</p>
 										</div>
 									</div>
@@ -53,14 +62,24 @@
 									<div class="card text-white bg-green">
 										<div class="card-header title-dato-cita">CITA:</div>
 										<div class="card-body datos-cita">
-											<h5 class="card-title">Hospital xxx</h5>
-											<p class="card-text">Distrito</p>
-											<p class="card-text">
-												Día: <span>31/12/2020</span>
-											</p>
-											<p class="card-text">
-												Hora: <span>09:00</span>
-											</p>
+											<form th:action="@{/admin/citaficha/update/}+ ${cita.id}"
+												th:object="${cita}" method="post" class="full-width">
+												<p class="card-title" th:text="*{hospital.nombre}" />
+												<p class="card-title" th:text="*{hospital.distrito.nombre}" />
+												<p class="card-title" th:text="'Fecha: ' + *{fechaCita}" />
+												<p class="card-title" th:text="'Hora: ' + *{hora}" />
+
+												<input type="text" class="card-title"
+													th:field="*{hospital.id}" hidden="true"> <input
+													type="text" class="card-title" th:field="*{donante}"
+													hidden="true"> <input type="date"
+													class="card-title" th:field="*{fechaCita}" hidden="true" />
+												<input type="time" class="card-title" th:field="*{hora}"
+													hidden="true" /> <input type="text" class="card-title"
+													th:field="*{fichaMedica}" />
+												<button th:if="${statusSend}==1" type="submit">Agregar
+													ficha</button>
+											</form>
 										</div>
 									</div>
 								</div>
@@ -70,37 +89,48 @@
 						<div class="panel-cita tab-pane fade" id="nav-profile"
 							role="tabpanel" aria-labelledby="nav-profile-tab">
 							<div class="card border-light col-md-9 not-padding">
-								<div class="card-header">Ficha médica:</div>
+								<div class="card-header"
+									th:text="'Ficha médica de ' + ${cita.donante.nombresApellidos}"></div>
 								<div class="card-body">
-									<form action="" class="full-width">
+									<form th:if="${fichaMedica}"
+										th:action="@{'/admin/fichamedica/save-'}+${cita.id}"
+										th:object="${fichaMedica}" method="post" class="full-width">
+										<div class="form-group">
+											<div class="col-sm-4">
+												<input type="text" class="form-control input-cita"
+													th:field="*{donante}" hidden=true>
+											</div>
+										</div>
 										<div class="form-group">
 											<label class="col-sm-2 label-cita">Hemoglobina:</label>
 											<div class="col-sm-4">
-												<input type="text" class="form-control input-cita">
+												<input type="text" class="form-control input-cita"
+													th:field="*{hemoglobina}">
 											</div>
 											<label class="col-sm-2 label-cita">ETS:</label>
 											<div class="col-sm-4">
-												<select class="form-control input-cita">
+												<select class="form-control input-cita" th:field="*{ets}">
 													<option value=" "></option>
-													<option value="0">No posee</option>
-													<option value="1">Si posee</option>
+													<option value="0">Negativo</option>
+													<option value="1">Positivo</option>
 												</select>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-2 label-cita">Estado:</label>
 											<div class="col-sm-4">
-												<select class="form-control input-cita">
+												<select class="form-control input-cita" th:field="*{estado}">
 													<option value=" "></option>
-													<option value="0">Apto</option>
-													<option value="1">No apto</option>
+													<option value="1">Apto</option>
+													<option value="0">No apto</option>
 												</select>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-2 label-cita">Comentarios:</label>
 											<div class="col-sm-10">
-												<textarea rows="4" cols="" class="form-control input-cita"></textarea>
+												<textarea rows="4" cols="" class="form-control input-cita"
+													th:field="*{comentarios}"></textarea>
 											</div>
 										</div>
 										<div class="form-group">
@@ -109,6 +139,31 @@
 											<a onclick="cancelar();" class="btn-cancel-ficha">Cancelar</a>
 										</div>
 									</form>
+									<div class="cd-dato-ficha" th:if="${fichaMedica2}">
+										<div class="form-group">
+											<p class="col-md-2 title-ficha-dato">Hemoglobina:</p>
+											<span class="col-md-4 text-ficha-dato"
+												th:text="${fichaMedica2.hemoglobina}"></span>
+											<p class="col-md-2 title-ficha-dato">ETS:</p>
+											<span class="col-md-4 text-ficha-dato"
+												th:if="${fichaMedica2.ets} == true" th:text="Positivo"></span>
+											<span class="col-md-4 text-ficha-dato"
+												th:if="${fichaMedica2.ets} == false" th:text="Negativo"></span>
+										</div>
+										<div class="form-group">
+											<p class="col-md-2 title-ficha-dato">Estado:</p>
+											<div class="col-md-4" th:switch="${estado}">
+												<span th:case="'true'">Apto</span>
+												<span th:case="*">No apto</span>
+											</div>
+											
+										</div>
+										<div class="form-group">
+											<p class="col-md-2 title-ficha-dato">Comentarios:</p>
+											<span class="col-md-4 text-ficha-dato"
+												th:text="${fichaMedica2.comentarios}"></span>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -125,7 +180,8 @@
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-3 label-donacion">Unidad de sangre:</label>
+											<label class="col-sm-3 label-donacion">Unidad de
+												sangre:</label>
 											<div class="col-sm-3">
 												<select class="form-control input-donacion">
 													<option value=" "></option>

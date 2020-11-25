@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,6 +32,9 @@ public class FichaMedica {
 	
 	@Column(name = "comentarios", nullable = false)
 	private String comentarios;
+	
+	@OneToOne(mappedBy = "fichaMedica")
+	private Cita cita;
 
 	public Integer getId() {
 		return id;
