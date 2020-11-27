@@ -35,10 +35,13 @@ public class FichaMedica {
 	
 	@OneToOne(mappedBy = "fichaMedica")
 	private Cita cita;
+<<<<<<< HEAD
 	
 	@OneToOne
 	@JoinColumn(name="unidadSangre_id")
 	private UnidadSangre unidadSangre;
+=======
+>>>>>>> 5021b29f88e65144572d6ec20835cf437d686697
 
 	public Integer getId() {
 		return id;

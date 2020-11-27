@@ -19,7 +19,7 @@
 								<th class="text-center" style="width: 120px;" scope="col">Fecha</th>
 								<th scope="col">Nombre del donante</th>
 								<th scope="col">Hospital</th>
-								<th class="text-center" style="width: 120px;" scope="col">Estado</th>
+								<th class="text-center" style="width: 120px;" scope="col">Ver</th>
 							</tr>
 						</thead>
 						<tbody class="card-body">
@@ -27,7 +27,12 @@
 								<th class="text-center" style="width: 60px;" th:text="${cita.fechaCita}" scope="row"></th>	
 								<td th:text="${cita.donante.nombresApellidos}"></td>
 								<td th:text="${cita.hospital.nombre}"></td>
+<<<<<<< HEAD
 								<td class="text-center" style="width: 60px;"><a th:href="@{'/admin/cita-' + ${cita.id}}" th:text=" ${cita.estadoCita}">Ver</a></td>
+=======
+								<td class="text-center" style="width: 60px;"><a th:href="@{'/admin/cita-' + ${cita.id}}">Ver</a></td>
+							
+>>>>>>> 5021b29f88e65144572d6ec20835cf437d686697
 							</tr>
 						</tbody>
 					</table>

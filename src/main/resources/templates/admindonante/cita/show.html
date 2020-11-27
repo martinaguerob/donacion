@@ -20,6 +20,7 @@
 						<div class="nav nav-tabs" id="nav-tab" role="tablist">
 							<a class="nav-link active tab-donante" id="nav-home-tab"
 								data-toggle="tab" href="#nav-home" role="tab"
+<<<<<<< HEAD
 								aria-controls="nav-home" aria-selected="true">Donante</a>
 								<a class="nav-link tab-donante" id="nav-profile-tab"
 								data-toggle="tab" href="#nav-profile" role="tab"
@@ -28,6 +29,15 @@
 								class="nav-link tab-donante" id="nav-contact-tab"
 								data-toggle="tab" href="#nav-donacion" role="tab"
 								aria-controls="nav-donacion" aria-selected="false">Donación</a>
+=======
+								aria-controls="nav-home" aria-selected="true">Donante</a> <a
+								class="nav-link tab-donante" id="nav-profile-tab"
+								data-toggle="tab" href="#nav-profile" role="tab"
+								aria-controls="nav-profile" aria-selected="false">Ficha
+								médica</a> <a class="nav-link tab-donante" id="nav-contact-tab"
+								data-toggle="tab" href="#nav-contact" role="tab"
+								aria-controls="nav-contact" aria-selected="false">Donación</a>
+>>>>>>> 5021b29f88e65144572d6ec20835cf437d686697
 						</div>
 					</nav>
 					<div class="tab-content" id="nav-tabContent">
@@ -63,11 +73,32 @@
 									<div class="card text-white bg-green">
 										<div class="card-header title-dato-cita">CITA:</div>
 										<div class="card-body datos-cita">
+<<<<<<< HEAD
 											<p class="card-title" th:text="${cita.hospital.nombre}" />
 											<p class="card-title"
 												th:text="${cita.hospital.distrito.nombre}" />
 											<p class="card-title" th:text="'Fecha: ' + ${cita.fechaCita}" />
 											<p class="card-title" th:text="'Hora: ' + ${cita.hora}" />
+=======
+											<form th:action="@{/admin/citaficha/update/}+ ${cita.id}"
+												th:object="${cita}" method="post" class="full-width">
+												<p class="card-title" th:text="*{hospital.nombre}" />
+												<p class="card-title" th:text="*{hospital.distrito.nombre}" />
+												<p class="card-title" th:text="'Fecha: ' + *{fechaCita}" />
+												<p class="card-title" th:text="'Hora: ' + *{hora}" />
+
+												<input type="text" class="card-title"
+													th:field="*{hospital.id}" hidden="true"> <input
+													type="text" class="card-title" th:field="*{donante}"
+													hidden="true"> <input type="date"
+													class="card-title" th:field="*{fechaCita}" hidden="true" />
+												<input type="time" class="card-title" th:field="*{hora}"
+													hidden="true" /> <input type="text" class="card-title"
+													th:field="*{fichaMedica}" />
+												<button th:if="${statusSend}==1" type="submit">Agregar
+													ficha</button>
+											</form>
+>>>>>>> 5021b29f88e65144572d6ec20835cf437d686697
 										</div>
 									</div>
 								</div>
@@ -79,8 +110,13 @@
 							<div class="card border-light col-md-9 not-padding">
 								<div class="card-header"
 									th:text="'Ficha médica de ' + ${cita.donante.nombresApellidos}"></div>
+<<<<<<< HEAD
 								<div class="card-body" th:if="${cita.estadoCita} == ESPERA">
 									<form 
+=======
+								<div class="card-body">
+									<form th:if="${fichaMedica}"
+>>>>>>> 5021b29f88e65144572d6ec20835cf437d686697
 										th:action="@{'/admin/fichamedica/save-'}+${cita.id}"
 										th:object="${fichaMedica}" method="post" class="full-width">
 										<div class="form-group">
@@ -127,6 +163,31 @@
 											<a onclick="cancelar();" class="btn-cancel-ficha">Cancelar</a>
 										</div>
 									</form>
+									<div class="cd-dato-ficha" th:if="${fichaMedica2}">
+										<div class="form-group">
+											<p class="col-md-2 title-ficha-dato">Hemoglobina:</p>
+											<span class="col-md-4 text-ficha-dato"
+												th:text="${fichaMedica2.hemoglobina}"></span>
+											<p class="col-md-2 title-ficha-dato">ETS:</p>
+											<span class="col-md-4 text-ficha-dato"
+												th:if="${fichaMedica2.ets} == true" th:text="Positivo"></span>
+											<span class="col-md-4 text-ficha-dato"
+												th:if="${fichaMedica2.ets} == false" th:text="Negativo"></span>
+										</div>
+										<div class="form-group">
+											<p class="col-md-2 title-ficha-dato">Estado:</p>
+											<div class="col-md-4" th:switch="${estado}">
+												<span th:case="'true'">Apto</span>
+												<span th:case="*">No apto</span>
+											</div>
+											
+										</div>
+										<div class="form-group">
+											<p class="col-md-2 title-ficha-dato">Comentarios:</p>
+											<span class="col-md-4 text-ficha-dato"
+												th:text="${fichaMedica2.comentarios}"></span>
+										</div>
+									</div>
 								</div>
 								<div class="card-body" th:if="${cita.estadoCita} != ESPERA">
 									<div class="form-group">
@@ -168,8 +229,15 @@
 												<input type="date" class="form-control input-unidad "
 													th:field="*{fechaVencimiento}">
 											</div>
+<<<<<<< HEAD
 											<label class="col-sm-3 label-donacion">Número de
 												lote:</label>
+=======
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 label-donacion">Unidad de
+												sangre:</label>
+>>>>>>> 5021b29f88e65144572d6ec20835cf437d686697
 											<div class="col-sm-3">
 												<input type="text" class="form-control input-unidad"
 													th:field="*{numeroLote}">

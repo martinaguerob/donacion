@@ -45,9 +45,12 @@ public class Cita {
 	@OneToOne
 	@JoinColumn(name="fichaMedica_id")
 	private FichaMedica fichaMedica;
+<<<<<<< HEAD
 	
 	@Column(name = "estado_cita", nullable = false)
 	private String estadoCita;
+=======
+>>>>>>> 5021b29f88e65144572d6ec20835cf437d686697
 
 	public Integer getId() {
 		return id;
@@ -92,6 +95,7 @@ public class Cita {
 	public FichaMedica getFichaMedica() {
 		return fichaMedica;
 	}
+<<<<<<< HEAD
 
 	public void setFichaMedica(FichaMedica fichaMedica) {
 		this.fichaMedica = fichaMedica;
@@ -103,5 +107,10 @@ public class Cita {
 
 	public void setEstadoCita(String estadoCita) {
 		this.estadoCita = estadoCita;
+=======
+
+	public void setFichaMedica(FichaMedica fichaMedica) {
+		this.fichaMedica = fichaMedica;
+>>>>>>> 5021b29f88e65144572d6ec20835cf437d686697
 	}
 }
