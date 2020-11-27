@@ -66,10 +66,14 @@ public class Donante {
 	@OneToMany(mappedBy = "donante")
 	private List<Cita> citas;
 	
+	@OneToMany(mappedBy = "donante")
+	private List<Donacion> donaciones;
+	
 	public Donante() {
 		registrosDonaciones = new ArrayList<RegistroDonacion>();
 		fichasMedicas = new ArrayList<FichaMedica>();
 		citas = new ArrayList<Cita>();
+		donaciones = new ArrayList<Donacion>();
 	}
 
 	public Integer getId() {
@@ -196,6 +200,11 @@ public class Donante {
 		this.citas = citas;
 	}
 	
-	
-	
+	public List<Donacion> getDonacion() {
+		return donaciones;
+	}
+
+	public void setDonacion(List<Donacion> donacion) {
+		this.donaciones = donacion;
+	}
 }

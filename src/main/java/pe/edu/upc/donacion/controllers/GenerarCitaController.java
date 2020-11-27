@@ -22,8 +22,6 @@ import pe.edu.upc.donacion.services.HospitalService;
 @Controller
 @RequestMapping("/generar-cita")
 public class GenerarCitaController {
-
-	private String messageConfirmDialog;
 	
 	@Autowired
 	private CitaService citaService;
@@ -36,8 +34,8 @@ public class GenerarCitaController {
 	
 	@GetMapping
 	public String index(Model model) {
-		Cita cita = new Cita();
 		try {
+			Cita cita = new Cita();
 			List<Donante> donantes = donanteService.findAll();
 			List<Hospital> hospitales = hospitalService.findAll();
 			model.addAttribute("donantes", donantes);
@@ -52,13 +50,11 @@ public class GenerarCitaController {
 	
 	@PostMapping("save") // generar-cita/save
 	public String save(@ModelAttribute("cita") Cita cita, SessionStatus status) {
-		
-		
 		try {
 			Optional<Hospital>optional = hospitalService.findById(cita.getHospital().getId());
 			if (optional.isPresent()) {
-				
 				if (optional.get().getHorarioApertura().before(cita.getHora()) &&  optional.get().getHorarioCierre().after(cita.getHora())) {
+					cita.setEstadoCita("ESPERA");
 					citaService.save(cita);
 					status.setComplete();	
 				}
@@ -73,12 +69,4 @@ public class GenerarCitaController {
 	}
 
 // CREAR FUNCIÓN QUE ENVÍE MENSAJE DE CONFIRMACIÓN 
-	
-	
-	
-	public String getMessageConfirmDialog() {
-		return messageConfirmDialog;
-	}
-	
-
 }

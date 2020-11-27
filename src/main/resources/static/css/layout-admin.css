@@ -271,8 +271,19 @@ div.content {
 	padding: 8px 0px;
 	color: #444;
 }
-
-.input-cita, .input-donacion {
+.label-ficha{
+	font-family: 'Montserrat';
+	font-size: 13px;
+	text-align: right;
+	color: #444;
+}
+.text-ficha{
+	font-size: 13px;
+	font-family: 'Montserrat';
+	font-weight: 600;
+	color: #444;
+}
+.input-cita, .input-donacion, .input-unidad {
 	width: 100%;
 	background-color: transparent;
 	padding: 5px 5px;
@@ -282,7 +293,9 @@ div.content {
 	border: none;
 	color: #444;
 }
-
+.input-unidad{
+	border-bottom: 1px solid #dee2e6;
+}
 .btn-save-ficha , .btn-edit-ficha, .btn-save-donacion{
 	color: #fff;
 	background-color: #6BDFCB;

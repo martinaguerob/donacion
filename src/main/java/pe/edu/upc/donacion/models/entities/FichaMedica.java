@@ -35,6 +35,13 @@ public class FichaMedica {
 	
 	@OneToOne(mappedBy = "fichaMedica")
 	private Cita cita;
+<<<<<<< HEAD
+	
+	@OneToOne
+	@JoinColumn(name="unidadSangre_id")
+	private UnidadSangre unidadSangre;
+=======
+>>>>>>> 5021b29f88e65144572d6ec20835cf437d686697
 
 	public Integer getId() {
 		return id;
@@ -83,4 +90,22 @@ public class FichaMedica {
 	public void setComentarios(String comentarios) {
 		this.comentarios = comentarios;
 	}
+
+	public Cita getCita() {
+		return cita;
+	}
+
+	public void setCita(Cita cita) {
+		this.cita = cita;
+	}
+
+	public UnidadSangre getUnidadSangre() {
+		return unidadSangre;
+	}
+
+	public void setUnidadSangre(UnidadSangre unidadSangre) {
+		this.unidadSangre = unidadSangre;
+	}
+	
+	
 }
