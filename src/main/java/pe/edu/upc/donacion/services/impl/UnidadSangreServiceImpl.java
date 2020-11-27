@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -56,4 +57,9 @@ public class UnidadSangreServiceImpl implements UnidadSangreService, Serializabl
 		return unidadSangreRepository.findByNumeroLote(numeroLote);
 	}
 
+	@Transactional(readOnly = true)
+	@Override
+	public List<UnidadSangre> findAllOrderByIdDesc() throws Exception {
+		return unidadSangreRepository.findAll(Sort.by(Sort.Direction.DESC,"id"));
+	}
 }

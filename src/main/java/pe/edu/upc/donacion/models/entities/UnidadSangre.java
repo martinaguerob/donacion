@@ -7,11 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
 @Table(name = "unidades_sangre")
@@ -22,14 +24,19 @@ public class UnidadSangre {
 
 	@Column(name = "fecha_vencimiento", nullable = false)
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = ISO.DATE)
 	private Date fechaVencimiento;
 
 	@Column(name = "numero_lote", unique = true, nullable = false)
 	private String numeroLote;
 
-	@OneToOne
-	@JoinColumn(name = "donacion_id")
+	@OneToOne(mappedBy = "unidadSangre")
 	private Donacion donacion;
+	
+	@OneToOne(mappedBy = "unidadSangre")
+	private FichaMedica fichaMedica;
+
+	
 
 	public Integer getId() {
 		return id;
@@ -62,5 +69,12 @@ public class UnidadSangre {
 	public void setDonacion(Donacion donacion) {
 		this.donacion = donacion;
 	}
+	
+	public FichaMedica getFichaMedica() {
+		return fichaMedica;
+	}
 
+	public void setFichaMedica(FichaMedica fichaMedica) {
+		this.fichaMedica = fichaMedica;
+	}
 }

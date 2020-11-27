@@ -11,18 +11,23 @@
 	<div class="container">
 		<div class="row">
 			<div class="card full-width">
-				<div class="card-header title-header">DONANTE<a th:href="@{'/admin/cita'}"><i class="fas fa-arrow-left"></i>Atrás</a></div>
+				<div class="card-header title-header">
+					DONANTE<a th:href="@{'/admin/cita'}"><i
+						class="fas fa-arrow-left"></i>Atrás</a>
+				</div>
 				<div class="card-body">
 					<nav>
 						<div class="nav nav-tabs" id="nav-tab" role="tablist">
-							<a class="nav-link active tab-donante" id="nav-home-tab" data-toggle="tab"
-								href="#nav-home" role="tab" aria-controls="nav-home"
-								aria-selected="true">Donante</a> <a class="nav-link tab-donante"
-								id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
-								role="tab" aria-controls="nav-profile" aria-selected="false">Ficha
-								médica</a> <a class="nav-link tab-donante" id="nav-contact-tab"
-								data-toggle="tab" href="#nav-contact" role="tab"
-								aria-controls="nav-contact" aria-selected="false">Donación</a>
+							<a class="nav-link active tab-donante" id="nav-home-tab"
+								data-toggle="tab" href="#nav-home" role="tab"
+								aria-controls="nav-home" aria-selected="true">Donante</a>
+								<a class="nav-link tab-donante" id="nav-profile-tab"
+								data-toggle="tab" href="#nav-profile" role="tab"
+								aria-controls="nav-profile" aria-selected="false">Ficha médica</a>
+								<a th:if="${cita.estadoCita} != ESPERA"
+								class="nav-link tab-donante" id="nav-contact-tab"
+								data-toggle="tab" href="#nav-donacion" role="tab"
+								aria-controls="nav-donacion" aria-selected="false">Donación</a>
 						</div>
 					</nav>
 					<div class="tab-content" id="nav-tabContent">
@@ -32,18 +37,23 @@
 								<div class="col-sm-8">
 									<div class="card">
 										<div class="card-body">
-											<h5 class="card-title name-donante">Daniela Razuri</h5>
+											<h5 class="card-title name-donante"
+												th:text="${cita.donante.nombresApellidos}"></h5>
 											<p class="card-text dato-donante">
-												Dirección: <span>Av. La Cantuta 421</span>
+												Dirección: <span
+													th:text="${cita.donante.direccion} + ' - ' + ${cita.donante.distrito.nombre}"></span>
 											</p>
 											<p class="card-text dato-donante">
-												Dirección: <span>Av. La Cantuta 421</span>
+												Número documento: <span
+													th:text="${cita.donante.numeroDocumento}"></span>
 											</p>
 											<p class="card-text dato-donante">
-												Dirección: <span>Av. La Cantuta 421</span>
+												Fecha de nacimiento: <span
+													th:text="${cita.donante.fechaNacimiento}"></span>
 											</p>
 											<p class="card-text dato-donante">
-												Dirección: <span>Av. La Cantuta 421</span>
+												Tipo de sangre: <span
+													th:text="${cita.donante.tipoSangre.nombre}"></span>
 											</p>
 										</div>
 									</div>
@@ -53,14 +63,11 @@
 									<div class="card text-white bg-green">
 										<div class="card-header title-dato-cita">CITA:</div>
 										<div class="card-body datos-cita">
-											<h5 class="card-title">Hospital xxx</h5>
-											<p class="card-text">Distrito</p>
-											<p class="card-text">
-												Día: <span>31/12/2020</span>
-											</p>
-											<p class="card-text">
-												Hora: <span>09:00</span>
-											</p>
+											<p class="card-title" th:text="${cita.hospital.nombre}" />
+											<p class="card-title"
+												th:text="${cita.hospital.distrito.nombre}" />
+											<p class="card-title" th:text="'Fecha: ' + ${cita.fechaCita}" />
+											<p class="card-title" th:text="'Hora: ' + ${cita.hora}" />
 										</div>
 									</div>
 								</div>
@@ -70,37 +77,48 @@
 						<div class="panel-cita tab-pane fade" id="nav-profile"
 							role="tabpanel" aria-labelledby="nav-profile-tab">
 							<div class="card border-light col-md-9 not-padding">
-								<div class="card-header">Ficha médica:</div>
-								<div class="card-body">
-									<form action="" class="full-width">
+								<div class="card-header"
+									th:text="'Ficha médica de ' + ${cita.donante.nombresApellidos}"></div>
+								<div class="card-body" th:if="${cita.estadoCita} == ESPERA">
+									<form 
+										th:action="@{'/admin/fichamedica/save-'}+${cita.id}"
+										th:object="${fichaMedica}" method="post" class="full-width">
+										<div class="form-group">
+											<div class="col-sm-4">
+												<input type="text" class="form-control input-cita"
+													th:field="*{donante}" hidden=true>
+											</div>
+										</div>
 										<div class="form-group">
 											<label class="col-sm-2 label-cita">Hemoglobina:</label>
 											<div class="col-sm-4">
-												<input type="text" class="form-control input-cita">
+												<input type="text" class="form-control input-cita"
+													th:field="*{hemoglobina}">
 											</div>
 											<label class="col-sm-2 label-cita">ETS:</label>
 											<div class="col-sm-4">
-												<select class="form-control input-cita">
+												<select class="form-control input-cita" th:field="*{ets}">
 													<option value=" "></option>
-													<option value="0">No posee</option>
-													<option value="1">Si posee</option>
+													<option value="0">Negativo</option>
+													<option value="1">Positivo</option>
 												</select>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-2 label-cita">Estado:</label>
 											<div class="col-sm-4">
-												<select class="form-control input-cita">
+												<select class="form-control input-cita" th:field="*{estado}">
 													<option value=" "></option>
-													<option value="0">Apto</option>
-													<option value="1">No apto</option>
+													<option value="1">Apto</option>
+													<option value="0">No apto</option>
 												</select>
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-2 label-cita">Comentarios:</label>
 											<div class="col-sm-10">
-												<textarea rows="4" cols="" class="form-control input-cita"></textarea>
+												<textarea rows="4" cols="" class="form-control input-cita"
+													th:field="*{comentarios}"></textarea>
 											</div>
 										</div>
 										<div class="form-group">
@@ -110,34 +128,77 @@
 										</div>
 									</form>
 								</div>
+								<div class="card-body" th:if="${cita.estadoCita} != ESPERA">
+									<div class="form-group">
+										<label class="col-md-2 label-ficha">Hemoglobina:</label>
+										<p class="col-md-4 text-ficha"
+											th:text="${fichaMedica.hemoglobina}" />
+										<label class="col-md-2 label-ficha">ETS:</label>
+										<p class="col-md-4 text-ficha"
+											th:if="${fichaMedica.ets} == true" th:text="Positivo" />
+										<p class="col-md-4 text-ficha"
+											th:if="${fichaMedica.ets} == false" th:text="Negativo" />
+									</div>
+									<div class="form-group">
+										<label class="col-md-2 label-ficha">Estado:</label>
+										<p class="col-md-4 text-ficha" th:if="${fichaMedica.estado} == true" th:text="APTO" />
+										<p class="col-md-4 text-ficha" th:if="${fichaMedica.estado} == false" th:text="NO APTO" />
+									</div>
+									<div class="form-group">
+										<label class="col-md-2 label-ficha">Comentarios:</label>
+										<p class="col-md-4 text-ficha"
+											th:text="${fichaMedica.comentarios}" />
+									</div>
+								</div>
 							</div>
 						</div>
-						<div class="panel-cita tab-pane fade" id="nav-contact"
-							role="tabpanel" aria-labelledby="nav-contact-tab">
-							<div class="card border-light col-md-9 not-padding">
-								<div class="card-header">Ficha donación:</div>
-								<div class="card-body">
-									<form action="" class="full-width">
+						<div class="panel-cita tab-pane fade" id="nav-donacion"
+							role="tabpanel" aria-labelledby="nav-contact-tab"
+							th:if="${cita.estadoCita} != ESPERA">
+							<div class="card border-light col-md-9 not-padding"
+								th:if="${cita.estadoCita} == ATENDIÓ">
+								<div class="card-header">Registrar unidad de sangre:</div>
+								<div class="card-body" th:if="${cita.estadoCita} == ATENDIÓ">
+									<form th:action="@{'/admin/unidadSangre/save-'}+${cita.id}"
+										th:object="${unidadSangre}" method="post" class="full-width">
 										<div class="form-group">
-											<label class="col-sm-3 label-donacion">Fecha:</label>
+											<label class="col-sm-3 label-donacion">Fecha de
+												vencimiento:</label>
 											<div class="col-sm-3">
-												<input type="date" class="form-control input-donacion">
+												<input type="date" class="form-control input-unidad "
+													th:field="*{fechaVencimiento}">
+											</div>
+											<label class="col-sm-3 label-donacion">Número de
+												lote:</label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control input-unidad"
+													th:field="*{numeroLote}">
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-3 label-donacion">Unidad de sangre:</label>
-											<div class="col-sm-3">
-												<select class="form-control input-donacion">
-													<option value=" "></option>
-													<option value="0">1250</option>
-													<option value="1">1251</option>
-												</select>
-											</div>
-										</div>
-										<div class="form-group">
-											<button type="submit" class="btn-save-donacion">Guardar</button>
+											<button type="submit" class="btn-save-donacion">Registrar</button>
 										</div>
 									</form>
+								</div>
+							</div>
+							<div class="card border-light col-md-9"
+								th:if="${cita.estadoCita} == DONÓ">
+								<div class="card-body">
+									<div class="card bg-light ">
+										<div class="card-header" th:text="'DONACIÓN #: ' + ${donacion.id}"></div>
+										<div class="card-body">
+											<div class="form-group">
+												<label class="col-md-3 label-ficha">Fecha de
+													vencimiento:</label>
+												<p class="col-md-3 text-ficha"
+													th:text="${unidadDeSangre.fechaVencimiento}" />
+												<label class="col-md-2 label-ficha">Número de lote:</label>
+												<p class="col-md-3 text-ficha"
+													th:text="${unidadDeSangre.numeroLote}" />
+											</div>
+										</div>
+									</div>
+
 								</div>
 							</div>
 						</div>

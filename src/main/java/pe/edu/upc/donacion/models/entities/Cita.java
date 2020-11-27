@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -40,6 +41,13 @@ public class Cita {
 	@Temporal(TemporalType.TIME)
 	@DateTimeFormat(pattern = "HH:mm")
 	private Date hora;
+	
+	@OneToOne
+	@JoinColumn(name="fichaMedica_id")
+	private FichaMedica fichaMedica;
+	
+	@Column(name = "estado_cita", nullable = false)
+	private String estadoCita;
 
 	public Integer getId() {
 		return id;
@@ -80,5 +88,20 @@ public class Cita {
 	public void setHora(Date hora) {
 		this.hora = hora;
 	}
+	
+	public FichaMedica getFichaMedica() {
+		return fichaMedica;
+	}
 
+	public void setFichaMedica(FichaMedica fichaMedica) {
+		this.fichaMedica = fichaMedica;
+	}
+
+	public String getEstadoCita() {
+		return estadoCita;
+	}
+
+	public void setEstadoCita(String estadoCita) {
+		this.estadoCita = estadoCita;
+	}
 }

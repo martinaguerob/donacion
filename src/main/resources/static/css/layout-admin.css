@@ -245,15 +245,24 @@ div.content {
 	font-size: 15px;
 	color: #ffffff;
 }
-.datos-cita h5{
+.datos-cita input{
 	font-family: 'Montserrat' !important;
-	font-size: 14px!important;
+	font-size: 15px!important;
 	color: #ffffff;
+	background: transparent;
+	width: 100%;
+	border: none;
+	padding: 0;
 }
-.datos-cita p{
-	font-family: 'Montserrat' !important;
-	font-size: 13px !important;
-	color: #ffffff;
+.datos-cita button{
+	color: #000000;
+	background-color: #F7F7F7;
+	border: none;
+	font-family: 'Montserrat';
+	font-size: 12px;
+	padding: 8px 12px;
+	transition: .7s;
+	border-radius: 5px;
 }
 .label-cita, .label-donacion {
 	font-family: 'Montserrat';
@@ -262,8 +271,19 @@ div.content {
 	padding: 8px 0px;
 	color: #444;
 }
-
-.input-cita, .input-donacion {
+.label-ficha{
+	font-family: 'Montserrat';
+	font-size: 13px;
+	text-align: right;
+	color: #444;
+}
+.text-ficha{
+	font-size: 13px;
+	font-family: 'Montserrat';
+	font-weight: 600;
+	color: #444;
+}
+.input-cita, .input-donacion, .input-unidad {
 	width: 100%;
 	background-color: transparent;
 	padding: 5px 5px;
@@ -273,7 +293,9 @@ div.content {
 	border: none;
 	color: #444;
 }
-
+.input-unidad{
+	border-bottom: 1px solid #dee2e6;
+}
 .btn-save-ficha , .btn-edit-ficha, .btn-save-donacion{
 	color: #fff;
 	background-color: #6BDFCB;
@@ -282,7 +304,7 @@ div.content {
 	font-size: 12px;
 	padding: 8px 12px;
 	transition: .7s;
-	
+	border-radius: 5px;
 }
 .btn-cancel-ficha{
 	margin-left: 10px;
@@ -293,6 +315,7 @@ div.content {
 	font-size: 12px;
 	padding: 8px 12px;
 	transition: .7s;
+	border-radius: 5px;
 }
 .btn-save-ficha:hover, .btn-save-donacion:hover{
 	background: #DD1F26;
@@ -307,4 +330,18 @@ div.content {
 .input-cita-active{
 	border-bottom: 1px solid #dee2e6;
 	transition: .7s;
+}
+
+.title-ficha-dato{
+	font-family: 'Montserrat';
+	font-size: 13px;
+	text-align: right;
+	color: #444;
+}
+.text-ficha-dato{
+	width: 100%;
+	font-size: 13px;
+	font-family: 'Montserrat';
+	font-weight: 600;
+	color: #444;
 }

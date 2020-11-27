@@ -24,11 +24,10 @@
 						</thead>
 						<tbody class="card-body">
 							<tr th:each="cita : ${citas}">
-								<th class="text-center" style="width: 60px;"
-									th:text="${cita.fechaCita}" scope="row">.</th>
+								<th class="text-center" style="width: 60px;" th:text="${cita.fechaCita}" scope="row"></th>	
 								<td th:text="${cita.donante.nombresApellidos}"></td>
 								<td th:text="${cita.hospital.nombre}"></td>
-								<td class="text-center" style="width: 120px;">Estado</td>
+								<td class="text-center" style="width: 60px;"><a th:href="@{'/admin/cita-' + ${cita.id}}" th:text=" ${cita.estadoCita}">Ver</a></td>
 							</tr>
 						</tbody>
 					</table>

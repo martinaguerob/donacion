@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,4 +51,22 @@ public class FichaMedicaServiceImpl implements FichaMedicaService, Serializable 
 		return fichaMedicaRepository.findAll();
 	}
 
+	@Transactional(readOnly = true)
+	@Override
+	public List<FichaMedica> findTopByIdOrderAsc() throws Exception {
+		return fichaMedicaRepository.findAll();
+	}
+
+	@Transactional(readOnly = true)
+	@Override
+	public List<FichaMedica> findAllOrderDesc() throws Exception {
+		return fichaMedicaRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+	}
+
+	@Override
+	public List<FichaMedica> findAllOrderAsc() throws Exception {
+		return fichaMedicaRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+	}
+	
+	
 }

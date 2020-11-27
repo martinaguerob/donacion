@@ -51,12 +51,13 @@ public class AdminController {
 	@GetMapping("distrito")
 	public String distrito(Model model) {
 		try {
-			List<Distrito> distritos = distritoService.findAll();
+			List<Distrito> distritos = distritoService.findAllOrderByNombreAsc();
 			model.addAttribute("distritos", distritos);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
+		
 		return "/administrador/distrito/inicio";
 	}
 
