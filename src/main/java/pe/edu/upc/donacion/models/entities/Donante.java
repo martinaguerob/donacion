@@ -58,9 +58,6 @@ public class Donante {
 	private Integer tipoSangreId;
 	
 	@OneToMany(mappedBy = "donante")
-	private List<RegistroDonacion> registrosDonaciones;
-	
-	@OneToMany(mappedBy = "donante")
 	private List<FichaMedica> fichasMedicas;
 	
 	@OneToMany(mappedBy = "donante")
@@ -70,7 +67,6 @@ public class Donante {
 	private List<Donacion> donaciones;
 	
 	public Donante() {
-		registrosDonaciones = new ArrayList<RegistroDonacion>();
 		fichasMedicas = new ArrayList<FichaMedica>();
 		citas = new ArrayList<Cita>();
 		donaciones = new ArrayList<Donacion>();
@@ -174,14 +170,6 @@ public class Donante {
 
 	public void setTipoSangreId(Integer tipoSangreId) {
 		this.tipoSangreId = tipoSangreId;
-	}
-
-	public List<RegistroDonacion> getRegistrosDonaciones() {
-		return registrosDonaciones;
-	}
-
-	public void setRegistrosDonaciones(List<RegistroDonacion> registrosDonaciones) {
-		this.registrosDonaciones = registrosDonaciones;
 	}
 
 	public List<FichaMedica> getFichasMedicas() {

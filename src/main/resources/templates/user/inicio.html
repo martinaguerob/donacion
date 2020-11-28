@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html
+	th:replace="~{layout :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Dona una vida | Usuario</title>
+<link rel="stylesheet" th:href="@{/css/user.css}">
+</head>
+<body>
+	<section class="bg-fondo">
+		<div class="donante">
+			<div class="container">
+				<div class="row h-center">
+					<div class="col-md-6">
+						<div class="nombre-donante">
+							<h5>Hola,</h5>
+							<h3 th:text="'Martín Aguero'"></h3>
+						</div>
+						<div class="img-donante">
+							<img th:src="@{/images/front/login.png}">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="menu-donante">
+							<div class="col-md-6">
+								<div class="cd-menu-donante">
+									<i class="fas fa-user-nurse"></i>
+									<h5>Mis datos</h5>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="cd-menu-donante">
+									<i class="fas fa-user-nurse"></i>
+									<h5>Donar</h5>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="cd-menu-donante">
+									<i class="fas fa-user-nurse"></i>
+									<h5>Mis citas</h5>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="cd-menu-donante">
+									<i class="fas fa-user-nurse"></i>
+									<h5>Registro</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+<script></script>
+</html>

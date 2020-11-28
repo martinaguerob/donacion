@@ -1,0 +1,49 @@
+.donante{
+	padding-top: 50px;
+}
+.nombre-donante{
+	margin-bottom: 25px;
+}
+.nombre-donante h5{
+	font-family: 'Montserrat';
+	font-style: italic;
+	color: #444;
+}
+.nombre-donante h3{
+	font-family: 'Montserrat';
+	background-color: #DD1F26;
+	padding: 5px 15px;
+	color: #fff;
+	border: none;
+	width: fit-content;
+}
+.img-donante img{
+	width: 100%;
+}
+
+
+.menu-donante{
+	padding-top: 120px;
+	display: flex;
+    flex-wrap: wrap;
+}
+.cd-menu-donante{
+	background-color: #6BDFCB;
+	width: 100%;
+	padding: 20px;
+	margin-bottom:35px;
+}
+.cd-menu-donante i{
+	color: #fff;
+	text-align: center;
+	width: 100%;
+	font-size: 60px;
+}
+.cd-menu-donante h5{
+	margin-top: 15px;
+	font-family: 'Montserrat';
+	text-align: center;
+	color: #fff;
+	font-weight: 300;
+	text-transform: uppercase;
+}

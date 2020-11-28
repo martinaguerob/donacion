@@ -14,17 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
 import pe.edu.upc.donacion.models.entities.Cita;
-<<<<<<< HEAD
 import pe.edu.upc.donacion.models.entities.Donacion;
 import pe.edu.upc.donacion.models.entities.FichaMedica;
 import pe.edu.upc.donacion.models.entities.UnidadSangre;
+
 import pe.edu.upc.donacion.services.CitaService;
 import pe.edu.upc.donacion.services.DonacionService;
-=======
-import pe.edu.upc.donacion.models.entities.FichaMedica;
-import pe.edu.upc.donacion.models.entities.UnidadSangre;
-import pe.edu.upc.donacion.services.CitaService;
->>>>>>> 5021b29f88e65144572d6ec20835cf437d686697
 import pe.edu.upc.donacion.services.FichaMedicaService;
 import pe.edu.upc.donacion.services.UnidadSangreService;
 
@@ -34,13 +29,9 @@ public class AdminDonanteController {
 
 	@Autowired
 	private CitaService citaService;
-
 	@Autowired
 	private FichaMedicaService fichaMedicaService;
 
-	@Autowired
-	private FichaMedicaService fichaMedicaService;
-	
 	@Autowired
 	private UnidadSangreService unidadSangreService;
 
@@ -50,15 +41,14 @@ public class AdminDonanteController {
 	@GetMapping("cita")
 	public String index(Model model) {
 		try {
-			List<Cita> citas = citaService.findAll();	
+			List<Cita> citas = citaService.findAll();
 			model.addAttribute("citas", citas);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		return "/admindonante/cita/inicio";	
+		return "/admindonante/cita/inicio";
 	}
-<<<<<<< HEAD
 
 	@GetMapping("cita-{id}")
 	public String showCita(@PathVariable("id") Integer id, Model model) {
@@ -88,110 +78,22 @@ public class AdminDonanteController {
 					Optional<UnidadSangre> optionalUnidad = unidadSangreService
 							.findById(optionalFicha.get().getUnidadSangre().getId());
 					model.addAttribute("unidadDeSangre", optionalUnidad.get());
-					
+
 					Optional<Donacion> optionalDonacion = donacionService.findById(optionalUnidad.get().getId());
 					model.addAttribute("donacion", optionalDonacion.get());
 				}
-=======
-	
-	@GetMapping("cita-{id}")
-	public String showCita(@PathVariable("id") Integer id, Model model) {
-		try {
-			Optional<Cita> optional = citaService.findById(id);
-			Integer id_ficha = fichaMedicaService.findAllOrderDesc().get(0).getId();
-			Optional<FichaMedica>optional2 = fichaMedicaService.findById(id_ficha);
-			if (optional.get().getFichaMedica() == null) { // SiNo hay ficha
-				FichaMedica fichaMedica = new FichaMedica();
-				fichaMedica.setDonante(optional.get().getDonante());
-				optional.get().setFichaMedica(optional2.get());
-				var statusSend = 0;
-				model.addAttribute("fichaMedica", fichaMedica);
-				model.addAttribute("statusSend", statusSend);
-			}else {
-				Optional<FichaMedica> optional3 = fichaMedicaService.findById(optional.get().getFichaMedica().getId());
-				model.addAttribute("fichaMedica2", optional3.get());
-			}	
-			model.addAttribute("cita", optional.get());
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.err.println(e.getMessage());
-		}
-		
-		return "/admindonante/cita/show";
-	}
-	
-	@PostMapping("fichamedica/save-{id}")
-	public String SaveFicha(@ModelAttribute("fichaMedica") FichaMedica fichaMedica, @PathVariable("id") Integer id, SessionStatus status) {
-		try {
-			fichaMedicaService.save(fichaMedica);
-			status.setComplete();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.err.println(e.getMessage());
-		}
-		return "redirect:/admin/cita-{id}-sendficha";
-	}
-	
-	@GetMapping("cita-{id}-sendficha")
-	public String SendFicha(@PathVariable("id") Integer id, Model model) {
-		try {
-			// Datos de la cita actual
-			Optional<Cita> optional = citaService.findById(id);
-			System.out.println(fichaMedicaService.findAllOrderDesc().get(0).getId());
-			System.out.println(fichaMedicaService.findAllOrderAsc().get(0).getId());
-			//Agrego el id de la última ficha
-			Integer id_ficha = fichaMedicaService.findAllOrderDesc().get(0).getId();
-			System.out.println(id_ficha);
-			//Busco la última ficha
-			Optional<FichaMedica>optional2 = fichaMedicaService.findById(id_ficha);
-			var statusSend = 1;
-			model.addAttribute("statusSend", statusSend);
-			//SI NO HAY FICHA
-			if (optional.get().getFichaMedica() == null) { // SiNo hay ficha
-				FichaMedica fichaMedica = new FichaMedica();
-				fichaMedica.setDonante(optional.get().getDonante());
-				
-				//Agrego a la cita los datos de la última fiche
-				optional.get().setFichaMedica(optional2.get());
-				
-				model.addAttribute("fichaMedica", fichaMedica);
-				
-			}else {
-				Optional<FichaMedica> optional3 = fichaMedicaService.findById(optional.get().getFichaMedica().getId());
-				model.addAttribute("fichaMedica2", optional3.get());
->>>>>>> 5021b29f88e65144572d6ec20835cf437d686697
 			}
 			model.addAttribute("cita", optional.get());
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		
 		return "/admindonante/cita/show";
 	}
-<<<<<<< HEAD
 
 	@PostMapping("fichamedica/save-{id}")
 	public String SaveFicha(@ModelAttribute("fichaMedica") FichaMedica fichaMedica, @PathVariable("id") Integer id,
 			SessionStatus status) {
-=======
-	
-	@PostMapping("citaficha/update/{id}")
-	public String updateCitaFicha(@PathVariable("id") Integer id, @ModelAttribute("cita") Cita cita, SessionStatus status) {
-		
-		try {
-			citaService.save(cita);
-			status.setComplete();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.err.println(e.getMessage());
-		}
-		return "redirect:/admin/cita-{id}";
-	}
-	
-	@GetMapping("unidades-de-sangre")
-	public String unidadSangre(Model model) {
->>>>>>> 5021b29f88e65144572d6ec20835cf437d686697
 		try {
 			Optional<Cita> optional = citaService.findById(id);
 			fichaMedica.setDonante(optional.get().getDonante());
@@ -225,15 +127,14 @@ public class AdminDonanteController {
 
 		return "redirect:/admin/cita-{id}";
 	}
-<<<<<<< HEAD
 
 	// SALVAR UNIDAD DE SANGRE (RECIBE ID CITA)
 	@PostMapping("unidadSangre/save-{id}")
 	public String saveUnidad(@PathVariable("id") Integer id, @ModelAttribute("unidadSangre") UnidadSangre unidadSangre,
 			SessionStatus status) {
 		try {
-			 unidadSangreService.save(unidadSangre);
-			 status.setComplete();
+			unidadSangreService.save(unidadSangre);
+			status.setComplete();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
@@ -252,7 +153,6 @@ public class AdminDonanteController {
 			Optional<UnidadSangre> optionalUltUnidad = unidadSangreService.findById(id_unidad);
 			System.out.println(optional.get().getEstadoCita());
 
-			
 			// CREAR DONACION
 			Donacion donacion = new Donacion();
 			// LE AGREGO DONANTE
@@ -262,7 +162,7 @@ public class AdminDonanteController {
 			// LE AGREGO LA FECHA
 			donacion.setFechaDonacion(optional.get().getFechaCita());
 			// GUARDAR DONACION
-			 donacionService.save(donacion);
+			donacionService.save(donacion);
 
 			// GUARDAR UNIDAD EN FICHA
 			// TRAER LA FICHA MÉDICA
@@ -283,7 +183,4 @@ public class AdminDonanteController {
 
 		return "redirect:/admin/cita-{id}";
 	}
-
-=======
->>>>>>> 5021b29f88e65144572d6ec20835cf437d686697
 }
