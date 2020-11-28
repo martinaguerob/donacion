@@ -79,7 +79,7 @@ public class GenerarCitaController {
 			System.err.println(e.getMessage());
 		}
 		
-		return "redirect:/generar-cita";	
+		return "redirect:/donante";	
 	}
 
 // CREAR FUNCIÓN QUE ENVÍE MENSAJE DE CONFIRMACIÓN 

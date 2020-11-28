@@ -24,11 +24,10 @@
 							<div class="card-body">
 								<h5 class="card-title title-nombre"
 									th:text="${donante.nombresApellidos}"></h5>
-								<form class="full-width" th:object="${donante}" method="post">
+								<form th:action="@{/donante/saveDonante/}+ ${datoDonante.id}" class="full-width" th:object="${donante}" method="post">
 									<div class="form-group">
-										<h5 class="tdato col-md-4" th:text="'Número de documento:'"></h5>
 										<h3 class="tdato-donante col-md-8"
-											th:text="${numeroDocumento} "></h3>
+											th:text="${datoDonante.numeroDocumento} "></h3>
 									</div>
 									<div class="form-group">
 										<h5 class="tdato col-md-4" th:text="'Dirección:'"></h5>

@@ -49,4 +49,9 @@ public class CitaServiceImpl implements CitaService, Serializable {
 	public List<Cita> findAll() throws Exception {
 		return citaRepository.findAll();
 	}
+
+	@Override
+	public List<Cita> findByIdDonante(Integer Id) throws Exception {
+		return citaRepository.findByIdDonante(Id);
+	}
 }

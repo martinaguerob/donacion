@@ -36,7 +36,7 @@
 								href="#">Mis citas</a></li>
 							<li sec:authorize="hasRole('ROLE_ADMINISTRADOR')"><a class=""
 								th:href="@{/admin}">Administración</a></li>
-							<li><a class="" th:href="@{'/generar-cita'}">Generar
+							<li sec:authorize="hasRole('ROLE_DONANTE')"><a class="" th:href="@{'/generar-cita'}">Generar
 									cita</a></li>
 						</ul>
 					</div>

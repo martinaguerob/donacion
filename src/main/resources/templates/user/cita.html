@@ -10,46 +10,27 @@
 </head>
 <body>
 	<section class="bg-fondo">
-		<div class="donante">
+		<div class="donante" style="padding-bottom: 50px;">
 			<div class="container">
 				<div class="row h-center">
 					<div class="nombre-donante">
 						<h5>Mis citas</h5>
 					</div>
-					<div class="col-md-6">
-						<div class="menu-donante">
+					<div class="menu-donante row not-margin">
+						<div th:each="cita : ${citas}">
 							<div class="col-md-4">
-								<div class="cd-menu-donante">
-									<a> <i class="fas fa-id-card"></i> <span>Mis datos</span>
-									</a>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="cd-menu-donante">
-									<a> <i class="fas fa-id-card"></i> <span>Mis datos</span>
-									</a>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="cd-menu-donante">
-									<a> <i class="fas fa-id-card"></i> <span>Mis datos</span>
-									</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="cd-menu-donante">
-									<a> <i class="fas fa-id-card"></i> <span>Mis datos</span>
-									</a>
+								<div class="card text-center" style="width: 18rem;">
+									<div class="card-body">
+										<h5 class="card-title">Cita:</h5>
+										<p class="card-text text-cita" th:text="'En el ' + ${cita.hospital.nombre}"></p>
+										<p class="card-text text-cita" th:text="'el día ' + ${cita.fechaCita}"></p>
+										<p class="card-text text-cita" th:text="'a las ' + ${cita.hora}"></p>
+										<a href="#" class="btn btn-primary" th:text="${cita.estadoCita}"></a>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6">
-						<div class="img-donante">
-							<img th:src="@{/images/front/login.png}">
-						</div>
-					</div>
-
 				</div>
 			</div>
 		</div>
