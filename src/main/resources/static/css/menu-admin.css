@@ -1,4 +1,57 @@
 .h100{height: 100%;}
+
+.img-logo{
+	width: 100px;
+	transition: .7s;
+}
+.options>li{
+	display: inline-block;
+	padding: 40px 10px 10px 10px;
+	transition: .7s;
+}
+.options>li>a{
+	text-decoration: none;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    color: #444242;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+.options>li>a:hover{
+	color: #DD1F26;
+	border-bottom: 2px solid #DD1F26;
+}
+
+.bg-menu{
+	background-color: rgba(255,255,255,0.7);
+	transition: .7s;
+}
+.banner{top:0;}
+.banner img{
+	width: 100%;
+	height: auto;
+}
+.login-go{
+	padding: 44px 0px 10px 0px;
+}
+.login-go, .user span{
+	font-family: 'Montserrat';
+	text-transform: uppercase;
+	font-size: 13px;
+	color: #6BDFCB;
+	font-weight: 600;
+	transition: .7s;
+}
+.menu-login{
+	padding: 40px 0px 10px 0px;
+	transition: .7s;
+}
+.login-go:hover{
+	color: #DD1F26;
+	
+}
 .main-header {
 	position: relative;
 	max-height: 100px;
@@ -10,24 +63,10 @@
 	padding: 40px 10px 0px 10px;
 }
 
-.options>li>a {
-	text-decoration: none;
-	font-size: 1em;
-	letter-spacing: 0.5px;
-	font-family: 'Montserrat';
-	font-weight: 500;
-	color: #444242;
-}
-
-.cd-img-logo a img {
-	width: 100px;
-}
-
 .cd-panel{
 	min-height: 100%;
 	background-color: #f1f1f1;
 }
-
 
 .main-sidebar {
 	position: absolute;

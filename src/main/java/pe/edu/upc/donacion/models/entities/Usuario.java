@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import pe.edu.upc.utils.Segmento;
@@ -39,6 +40,9 @@ public class Usuario {
 
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Authority> authorities;
+	
+	@OneToOne(mappedBy = "usuario", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Donante donante;
 	
 	public Usuario() {
 		this.enable = true;
@@ -110,4 +114,11 @@ public class Usuario {
 	public void setAuthorities(List<Authority> authorities) {
 		this.authorities = authorities;
 	}
+	public Donante getDonante() {
+		return donante;
+	}
+	public void setDonante(Donante donante) {
+		this.donante = donante;
+	}
+	
 }

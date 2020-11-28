@@ -1,0 +1,46 @@
+.datos-donante{
+	padding-top: 50px;
+}
+.cd-img-datos{
+	padding-top: 100px;
+}
+.cd-img-datos img{
+	position: relative;	
+	width: 100%;
+	height: auto;
+}
+
+.tdato{
+	font-family: 'Montserrat';
+	font-size: 13px;
+	font-weight: 300px;
+	text-align: right;
+}
+.tdato-donante{
+	font-family: 'Montserrat';
+	font-size: 14px;
+	font-weight: 500;
+}
+.form-group{
+	display: flex;
+}
+.form-group h5{
+	padding-top: 15px;
+}
+.form-group input, .form-group select{
+	width: 100%;
+	border: none;
+	background-color: transparent;
+}
+.form-group button{
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	border: none;
+	box-shadow: none;
+	background-color: #6BDFCB;
+	color: #ffffff;
+	font-family: 'Montserrat';
+	transition: .7s;
+}

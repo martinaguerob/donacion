@@ -32,10 +32,9 @@
 						<ul class="options text-right">
 							<li><a class="" th:href="@{'/'}">Inicio</a></li>
 							<li><a class="" href="#">Nosotros</a></li>
-							<li><a class="" sec:authorize="hasRole('ROLE_DONANTE')"
+							<li sec:authorize="hasRole('ROLE_DONANTE')"><a class="" 
 								href="#">Mis citas</a></li>
-							<li><a class=""
-								sec:authorize="hasRole('ROLE_ADMINISTRADOR')"
+							<li sec:authorize="hasRole('ROLE_ADMINISTRADOR')"><a class=""
 								th:href="@{/admin}">Administración</a></li>
 							<li><a class="" th:href="@{'/generar-cita'}">Generar
 									cita</a></li>
@@ -49,7 +48,7 @@
 								data-toggle="dropdown" aria-haspopup="true"
 								aria-expanded="false"><span sec:authentication="name">Username</span></a>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-								<a class="dropdown-item" th:href="@{/perfil}">Ver mi perfil</a>
+								<a class="dropdown-item" sec:authorize="hasRole('ROLE_DONANTE')" th:href="@{/donante}">Ver mi perfil</a>
 								<a class="dropdown-item" th:href="@{/logout}">Cerrar sesión</a>
 							</div>
 						</div>
