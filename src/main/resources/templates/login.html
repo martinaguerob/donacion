@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html
 	th:replace="~{layout :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Dona una vida | Ingresar</title>
@@ -20,12 +22,12 @@
 				<div class="col-md-4">
 					<div class="login">
 						<h3>¿Eres donante registrado?</h3>
-						<form>
+						<form th:action="@{/signin}" method="post">
 							<div class="cd-form-login">
-								<input type="text" placeholder="Correo electrónico">
+								<input type="email" name="email" id="email" placeholder="Correo electrónico">
 							</div>
 							<div class="cd-form-login">
-								<input type="password" placeholder="Contraseña">
+								<input type="password" name="password" id="password" placeholder="Contraseña">
 							</div>
 							<div class="cd-form-login">
 								<button type="submit" class="btn-ingresar" id="btn-ingresar">Ingresar</button>

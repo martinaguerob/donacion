@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html
 	th:replace="~{layout :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Dona una vida</title>
@@ -40,7 +41,8 @@
 									</div>
 									<div class="col-md-6 col-lg-6">
 										<div class="cd-img-caso">
-											<img th:src="@{/images/casos/{image}(image=${caso.urlImage})}"
+											<img
+												th:src="@{/images/casos/{image}(image=${caso.urlImage})}"
 												style="width: 100%; height: auto;" />
 										</div>
 									</div>
@@ -134,5 +136,6 @@
 		</div>
 	</section>
 </body>
-<script></script>
+<script th:src="@{/components/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery-3.4.1.min.js}"></script><script></script>
 </html>

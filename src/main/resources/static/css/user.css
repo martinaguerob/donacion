@@ -21,7 +21,6 @@
 	width: 100%;
 }
 
-
 .menu-donante{
 	padding-top: 120px;
 	display: flex;
@@ -30,7 +29,7 @@
 .cd-menu-donante{
 	background-color: #6BDFCB;
 	width: 100%;
-	padding: 20px;
+	padding: 30px 20px;
 	margin-bottom:35px;
 }
 .cd-menu-donante i{

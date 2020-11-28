@@ -35,3 +35,22 @@
 	width: 100%;
 	height: auto;
 }
+.login-go{
+	padding: 40px 0px 10px 0px;
+}
+.login-go, .user span{
+	font-family: 'Montserrat';
+	text-transform: uppercase;
+	font-size: 13px;
+	color: #6BDFCB;
+	font-weight: 600;
+	transition: .7s;
+}
+.menu-login{
+	padding: 40px 0px 10px 0px;
+	transition: .7s;
+}
+.login-go:hover{
+	color: #DD1F26;
+	
+}
