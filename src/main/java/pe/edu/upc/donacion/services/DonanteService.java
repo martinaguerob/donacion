@@ -8,4 +8,5 @@ import pe.edu.upc.donacion.models.entities.Donante;
 public interface DonanteService extends CrudService<Donante, Integer> {
 	List<Donante> findByNombresApellidos(String nombresApellidos) throws Exception;
 	Optional<Donante> findByNumeroDocumento(String numeroDocumento) throws Exception;
+	Optional<Donante> findByEmail(String email) throws Exception;
 }

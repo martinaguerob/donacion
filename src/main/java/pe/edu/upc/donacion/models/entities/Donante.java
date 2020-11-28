@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,15 +22,13 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "donantes")
 public class Donante {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(name = "email", unique = true, nullable = false)
 	private String email;
-	
-	@Column(name = "contraseña", nullable = false)
-	private String contraseña;
 	
 	@Column(name = "nombres_apellidos", nullable = false)
 	private String nombresApellidos;
@@ -40,7 +40,7 @@ public class Donante {
 	@Temporal(TemporalType.DATE)
 	private Date fechaNacimiento;
 	
-	@Column(name = "direccion", nullable = false)
+	@Column(name = "direccion")
 	private String direccion;
 	
 	@ManyToOne
@@ -56,6 +56,10 @@ public class Donante {
 	
 	@Transient
 	private Integer tipoSangreId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id")
+	private Usuario usuario;
 	
 	@OneToMany(mappedBy = "donante")
 	private List<FichaMedica> fichasMedicas;
@@ -86,14 +90,6 @@ public class Donante {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getContraseña() {
-		return contraseña;
-	}
-
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
 	}
 
 	public String getNombresApellidos() {
@@ -195,4 +191,22 @@ public class Donante {
 	public void setDonacion(List<Donacion> donacion) {
 		this.donaciones = donacion;
 	}
+
+	public List<Donacion> getDonaciones() {
+		return donaciones;
+	}
+
+	public void setDonaciones(List<Donacion> donaciones) {
+		this.donaciones = donaciones;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
+	
 }

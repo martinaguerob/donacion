@@ -14,19 +14,34 @@ import pe.edu.upc.donacion.services.CasoService;
 @Controller
 @RequestMapping("/")
 public class IndexController {
-	
+
 	@Autowired
 	private CasoService casoService;
-	
+
 	@GetMapping
 	public String index(Model model) {
 		try {
-			List<Caso>casos = casoService.findAll();
+			List<Caso> casos = casoService.findAll();
 			model.addAttribute("casos", casos);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
 		return "inicio";
+	}
+
+	@GetMapping("help")
+	public String help() {
+		return "help";
+	}
+	
+	@GetMapping("layout")
+	public String layout() {
+		return "layout/layout";
+	}
+	
+	@GetMapping("login")
+	public String login() {
+		return "login";
 	}
 }

@@ -21,7 +21,6 @@
 	width: 100%;
 }
 
-
 .menu-donante{
 	padding-top: 120px;
 	display: flex;
@@ -30,17 +29,22 @@
 .cd-menu-donante{
 	background-color: #6BDFCB;
 	width: 100%;
-	padding: 20px;
+	padding: 30px 20px;
 	margin-bottom:35px;
+	text-align: center;
+}
+.cd-menu-donante a{
+	text-align: center;
 }
 .cd-menu-donante i{
 	color: #fff;
 	text-align: center;
 	width: 100%;
 	font-size: 60px;
+	margin-bottom: 15px !important;
 }
-.cd-menu-donante h5{
-	margin-top: 15px;
+.cd-menu-donante span{
+	
 	font-family: 'Montserrat';
 	text-align: center;
 	color: #fff;

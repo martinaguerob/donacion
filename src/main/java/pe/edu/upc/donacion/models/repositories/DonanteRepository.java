@@ -14,4 +14,6 @@ public interface DonanteRepository extends JpaRepository<Donante, Integer> {
 	List<Donante> findByNombresApellidosContaining(String nombresApellidos) throws Exception;
 	
 	Optional<Donante> findByNumeroDocumento(String numeroDocumento) throws Exception;
+	
+	Optional<Donante> findByEmail(String email) throws Exception;
 }

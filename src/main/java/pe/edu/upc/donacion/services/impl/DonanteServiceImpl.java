@@ -61,4 +61,9 @@ public class DonanteServiceImpl implements DonanteService, Serializable{
 	public Optional<Donante> findByNumeroDocumento(String numeroDocumento) throws Exception {
 		return donanteRepository.findByNumeroDocumento(numeroDocumento);
 	}
+
+	@Override
+	public Optional<Donante> findByEmail(String email) throws Exception {
+		return donanteRepository.findByEmail(email);
+	}
 }

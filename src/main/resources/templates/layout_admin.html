@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html th:fragment="layout (title, css, content, js)"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="language" content="es">
@@ -15,30 +16,47 @@
 </head>
 <body>
 	<!-- Menú -->
-	<header class="main-header">
-		<div class="menu bg-white">
-			<div class="container">
+	<nav class="full-width bg-nav" id="nav-wrapper">
+		<div class="nav">
+			<div class="container full-widthl">
 				<div class="row not-margin h-center">
-					<div class="col-md-4 col-lg-5 not-padding">
+					<div class="col-md-3 col-lg-3 not-padding">
 						<div class="cd-img-logo">
-							<a th:href="@{'/'}"> <img alt="" th:src="@{/images/LOGO.png}" /></a>
+							<a th:href="@{'/'}"> <img class="img-logo"
+								th:src="@{/images/LOGO.png}" /></a>
 						</div>
 					</div>
 					<div class="col-md-8 col-lg-7">
 						<ul class="options text-right">
 							<li><a class="" th:href="@{'/'}">Inicio</a></li>
 							<li><a class="" href="#">Nosotros</a></li>
-							<li><a class="" href="#">Dona</a></li>
+							<li sec:authorize="hasRole('ROLE_DONANTE')"><a class="" 
+								href="#">Mis citas</a></li>
+							<li sec:authorize="hasRole('ROLE_ADMINISTRADOR')"><a class=""
+								th:href="@{/admin}">Administración</a></li>
 							<li><a class="" th:href="@{'/generar-cita'}">Generar
 									cita</a></li>
 						</ul>
 					</div>
+					<div class="col-md-1 col-lg-2">
+						<a sec:authorize="isAnonymous()" th:href="@{/login}" type="button"
+							class="login-go"> Iniciar Sesión </a>
+						<div class="dropdown show menu-login" sec:authorize="isAuthenticated()">
+							<a class="dropdown-toggle user" role="button" id="dropdownMenuLink"
+								data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false"><span sec:authentication="name">Username</span></a>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+								<a class="dropdown-item" th:href="@{/perfil}">Ver mi perfil</a>
+								<a class="dropdown-item" th:href="@{/logout}">Cerrar sesión</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</header>
+	</nav>
 	<!-- End-Menú -->
-
+	
 	<section class="admin">
 		<div class="container-full full-width h100">
 			<div class="row h100 not-margin">
@@ -62,9 +80,10 @@
 			</div>
 		</div>
 	</section>
-	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
-	<script th:src="@{/components/bootstrap/js/bootstrap.min.js}"></script>
-	<script th:src="@{/js/jquery-ui.min.js}"></script>
-	<script th:replace="${js}"></script>
+	
 </body>
+<script th:src="@{/components/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:replace="${js}"></script>
 </html>
