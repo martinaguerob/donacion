@@ -28,12 +28,6 @@ public class AddUserDB implements CommandLineRunner{
 		// SOLO DESBLOQUEAR CUANDO SE REQUIERA CREAR USUARIO DE FORMA MANUAL
 		
 		// Creando el objeto que cifra las contraseñas
-		BCryptPasswordEncoder bcpe = new BCryptPasswordEncoder();
-		String password = bcpe.encode("donante");
-		
-		BCryptPasswordEncoder bcpeAdmin = new BCryptPasswordEncoder();
-		String passwordAdmin = bcpeAdmin.encode("admin");
-		
 		/*
 		Usuario Udonante1 = new Usuario();
 		Udonante1.setNombresApellidos("Martin Aguero");
@@ -88,5 +82,6 @@ public class AddUserDB implements CommandLineRunner{
 		donanteRepository.save(donante1);
 		donanteRepository.save(donante2);
 		*/
+		
 	}
 }

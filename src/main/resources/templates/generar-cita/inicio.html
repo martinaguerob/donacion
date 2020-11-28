@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html
 	th:replace="~{layout :: layout(~{::title}, ~{::link}, ~{::body}, ~{::script})}"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Generar cita</title>
@@ -23,13 +24,7 @@
 					</div>
 					<form th:action="@{/generar-cita/save}" th:object="${cita}"
 						method="post" class="form-generar">
-						<div class="cd-form-registrar">
-							<select class="form-control select-cita" th:field="*{donante}">
-								<option value="0">Nombre de donante</option>
-								<option th:each="donante: ${donantes}" th:value="${donante.id}"
-									th:text="${donante.nombresApellidos}"></option>
-							</select>
-						</div>
+						
 
 						<div class="cd-form-registrar">
 							<select class="form-control select-cita" th:field="*{hospital}"

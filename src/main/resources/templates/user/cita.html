@@ -5,7 +5,7 @@
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Dona una vida | Usuario</title>
+<title>Dona una vida | Mis citas</title>
 <link rel="stylesheet" th:href="@{/css/user.css}">
 </head>
 <body>
@@ -13,56 +13,49 @@
 		<div class="donante">
 			<div class="container">
 				<div class="row h-center">
+					<div class="nombre-donante">
+						<h5>Mis citas</h5>
+					</div>
 					<div class="col-md-6">
-						<div class="nombre-donante">
-							<h5>Hola,</h5>
-							<h3 th:text="${donante.nombresApellidos}"></h3>
+						<div class="menu-donante">
+							<div class="col-md-4">
+								<div class="cd-menu-donante">
+									<a> <i class="fas fa-id-card"></i> <span>Mis datos</span>
+									</a>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="cd-menu-donante">
+									<a> <i class="fas fa-id-card"></i> <span>Mis datos</span>
+									</a>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="cd-menu-donante">
+									<a> <i class="fas fa-id-card"></i> <span>Mis datos</span>
+									</a>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="cd-menu-donante">
+									<a> <i class="fas fa-id-card"></i> <span>Mis datos</span>
+									</a>
+								</div>
+							</div>
 						</div>
+					</div>
+					<div class="col-md-6">
 						<div class="img-donante">
 							<img th:src="@{/images/front/login.png}">
 						</div>
 					</div>
-					<div class="col-md-6">
-						<div class="menu-donante">
-							<div class="col-md-6">
-								<div class="cd-menu-donante">
-									<a th:href="@{'/donante/'}+${donante.id}">
-										<i class="fas fa-id-card"></i>
-										<span>Mis datos</span>
-									</a>
-								</div>							
-							</div>
-							<div class="col-md-6">
-								<div class="cd-menu-donante">
-									<a th:href="@{'/generar-cita'}">
-										<i class="fas fa-syringe"></i>
-										<span>Donar</span>
-									</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="cd-menu-donante">
-									<a th:href="@{'/mis-citas/'}+${donante.id}">
-										<i class="fas fa-calendar-check"></i>
-										<span>Mis citas</span>
-									</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="cd-menu-donante">
-									<a th:href="@{'/mis-donaciones/'}+${donante.id}">
-										<i class="fas fa-hospital-user"></i> 
-										<span>Registro</span>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
+
 				</div>
 			</div>
 		</div>
 	</section>
 </body>
 <script th:src="@{/components/bootstrap/js/bootstrap.min.js}"></script>
-<script th:src="@{/js/jquery-3.4.1.min.js}"></script><script></script>
+<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script></script>
 </html>

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pe.edu.upc.donacion.models.entities.Distrito;
 import pe.edu.upc.donacion.models.entities.Donante;
 import pe.edu.upc.donacion.models.entities.TipoSangre;
+import pe.edu.upc.donacion.services.CitaService;
 import pe.edu.upc.donacion.services.DistritoService;
 import pe.edu.upc.donacion.services.DonanteService;
 import pe.edu.upc.donacion.services.TipoSangreService;
@@ -32,6 +33,11 @@ public class DonanteController {
 	
 	@Autowired
 	private TipoSangreService tipoSangreService;
+	
+	@Autowired
+    private CitaService citaService;
+	
+	
 	
 	private UserDetails userDetails;
 	

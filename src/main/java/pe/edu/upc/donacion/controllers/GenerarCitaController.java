@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,10 +30,12 @@ public class GenerarCitaController {
 	private CitaService citaService;
 	
 	@Autowired
-	private DonanteService donanteService;
+    private DonanteService donanteService;
 	
 	@Autowired
 	private HospitalService hospitalService;
+	
+	
 	
 	@GetMapping
 	public String index(Model model) {
@@ -50,11 +55,20 @@ public class GenerarCitaController {
 	
 	@PostMapping("save") // generar-cita/save
 	public String save(@ModelAttribute("cita") Cita cita, SessionStatus status) {
+		Authentication auth = SecurityContextHolder
+	            .getContext()
+	            .getAuthentication();
+	    UserDetails userDetail = (UserDetails) auth.getPrincipal();
+	    String userName = userDetail.getUsername();
+	    
 		try {
+			Optional<Donante>optionalDonante= donanteService.findByEmail(userName);
+	    	System.out.println(optionalDonante.get().getNombresApellidos());
 			Optional<Hospital>optional = hospitalService.findById(cita.getHospital().getId());
 			if (optional.isPresent()) {
 				if (optional.get().getHorarioApertura().before(cita.getHora()) &&  optional.get().getHorarioCierre().after(cita.getHora())) {
 					cita.setEstadoCita("ESPERA");
+					cita.setDonante(optionalDonante.get());
 					citaService.save(cita);
 					status.setComplete();	
 				}
